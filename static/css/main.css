@@ -608,23 +608,27 @@ button { font-family: var(--font-body); cursor: pointer; }
   transform: none;
 }
 .service-card__body {
-  left: var(--space-4);
-  right: var(--space-4);
-  bottom: var(--space-4);
+  left: clamp(34px, 8%, 56px);
+  right: clamp(34px, 8%, 56px);
+  bottom: clamp(34px, 8%, 56px);
+  text-align: center;
 }
 .service-card__title {
-  font-size: clamp(1.35rem, 2vw, 1.8rem);
-  margin-top: var(--space-2);
+  color: #B99663;
+  font-family: var(--font-body);
+  font-size: clamp(.92rem, 1.25vw, 1.15rem);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  line-height: 1.25;
+  text-transform: uppercase;
 }
 .service-card__desc {
   display: block;
-  max-width: 460px;
+  max-width: 260px;
   color: var(--color-text-secondary);
-  margin-top: var(--space-3);
-}
-.service-card__arrow {
-  opacity: 1;
-  transform: none;
+  font-size: .72rem;
+  line-height: 1.45;
+  margin: var(--space-2) auto 0;
 }
 
 /* Editorial stories replace the dense gallery */

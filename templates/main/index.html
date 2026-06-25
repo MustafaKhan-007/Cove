@@ -38,18 +38,18 @@
   </div>
   <div class="services__grid animate-on-scroll">
     {% set service_copy = {
-      'massanzug': 'Ein persönlicher Anzug mit ruhiger Linie, präzisem Sitz und Stoffen, die über Jahre Bestand haben.',
-      'masshemd': 'Maßhemden für Alltag und Anlass — Kragen, Manschette, Stoff und Passform nach Ihren Vorgaben.',
-      'blog': 'Inspiration, Stilwissen und Geschichten aus der Welt der Maßschneiderei.',
-      'standorte': '19 Ateliers deutschlandweit — finden Sie den passenden cove Standort in Ihrer Nähe.',
-      'hochzeit': 'Klassische Hochzeitsgarderobe mit Maß, Zurückhaltung und Details, die zum Tag passen.',
-      'hemdkonfigurator': 'Entwerfen Sie Ihr Maßhemd online: Stoff, Kragen, Manschette und Details.',
-      'schuhkonfigurator': 'Individualisieren Sie Herrenschuhe nach Modell, Leder, Farbe und Finish.',
-      'sakko': 'Ein Sakko nach Maß bringt Haltung in Business, Reise und private Garderobe.',
-      'mantel': 'Mäntel und Outerwear mit klarer Silhouette, abgestimmt auf Stoff, Saison und Nutzung.',
-      'masshose': 'Maßhosen mit sauberem Fall und Komfort — als separates Stück oder Teil eines Anzugs.',
-      'schuhe': 'Ausgewählte Schuhmodelle und Pflegeprodukte als Fundament einer vollständigen Garderobe.',
-      'onlineshop': 'Ready-to-wear, Accessoires, Pflege und Geschenke aus dem cove Sortiment.'
+      'massanzug': 'Ruhige Linie. Präziser Sitz.',
+      'masshemd': 'Kragen, Manschette und Passform nach Maß.',
+      'blog': 'Stilwissen aus der Maßschneiderei.',
+      'standorte': '19 Ateliers deutschlandweit.',
+      'hochzeit': 'Garderobe für große Tage.',
+      'hemdkonfigurator': 'Ihr Maßhemd online entwerfen.',
+      'schuhkonfigurator': 'Schuhe individuell gestalten.',
+      'sakko': 'Haltung für Business und Freizeit.',
+      'mantel': 'Outerwear mit klarer Silhouette.',
+      'masshose': 'Sauberer Fall und Komfort.',
+      'schuhe': 'Das Fundament der Garderobe.',
+      'onlineshop': 'Accessoires, Pflege und Geschenke.'
     } %}
     {% for s in services %}
       <a href="{{ s.route }}" class="service-card service-card--{{ s.span }}"{% if s.route.startswith('http') %} target="_blank" rel="noopener"{% endif %}>
@@ -57,10 +57,8 @@
         <img src="{{ url_for('static', filename=card_path) }}" alt="{{ s.label_de }}" loading="lazy"
              onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-1.jpg') }}'">
         <div class="service-card__body">
-          <span class="service-card__label">{{ s.label_de }}</span>
           <div class="service-card__title">{{ s.label_de }}</div>
           <p class="service-card__desc">{{ service_copy[s.key] }}</p>
-          <span class="service-card__arrow">&#8594;</span>
         </div>
       </a>
     {% endfor %}
