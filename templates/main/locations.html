@@ -21,11 +21,12 @@
     {% for loc in locations %}
       <div class="loc-card{% if loop.first %} is-active{% endif %}" data-slug="{{ loc.slug }}"
            data-embed="{{ loc.map_embed }}" data-city="{{ loc.city }}"
+           data-address="{{ loc.address }}" data-phone="{{ loc.phone }}"
+           data-hours="{{ (loc.hours or []) | join(' · ') }}"
            {% if loc.coords %}data-lat="{{ loc.coords.lat }}" data-lng="{{ loc.coords.lng }}"{% endif %}>
         <div class="loc-card__city">{{ loc.city }}</div>
         {% if loc.address %}<div class="loc-card__meta">{{ loc.address }}</div>{% endif %}
         <div class="loc-card__meta">{{ loc.phone }}</div>
-        <a href="/standorte/{{ loc.slug }}" class="link-arrow" style="font-size:0.7rem;margin-top:8px;">Details &#8594;</a>
       </div>
     {% endfor %}
   </div>
@@ -34,6 +35,24 @@
     <iframe id="locMap" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
       src="{% if locations and locations[0].map_embed %}{{ locations[0].map_embed }}{% else %}https://www.google.com/maps?q=Deutschland&output=embed&z=6{% endif %}"
       title="cove Standortkarte"></iframe>
+    {% if locations %}
+      <aside class="loc-detail-panel" id="locDetail">
+        <span class="section-eyebrow">Ausgewählter Standort</span>
+        <h2 id="locDetailCity">{{ locations[0].city }}</h2>
+        <div class="info-card__row">
+          <span class="info-card__label" data-i18n="locations.address">Adresse</span>
+          <span id="locDetailAddress">{{ locations[0].address }}</span>
+        </div>
+        <div class="info-card__row">
+          <span class="info-card__label" data-i18n="locations.phone">Telefon</span>
+          <a id="locDetailPhone" href="tel:{{ locations[0].phone | replace(' ', '') }}">{{ locations[0].phone }}</a>
+        </div>
+        <div class="info-card__row">
+          <span class="info-card__label" data-i18n="locations.hours">Öffnungszeiten</span>
+          <span id="locDetailHours">{% if locations[0].hours %}{{ locations[0].hours | join(' · ') }}{% else %}Nach Vereinbarung{% endif %}</span>
+        </div>
+      </aside>
+    {% endif %}
   </div>
 </section>
 {% endblock %}
@@ -43,6 +62,10 @@
   const cards = document.querySelectorAll(".loc-card");
   const mapFrame = document.getElementById("locMap");
   const search = document.getElementById("locSearch");
+  const detailCity = document.getElementById("locDetailCity");
+  const detailAddress = document.getElementById("locDetailAddress");
+  const detailPhone = document.getElementById("locDetailPhone");
+  const detailHours = document.getElementById("locDetailHours");
 
   cards.forEach((card) => {
     card.addEventListener("click", () => {
@@ -53,6 +76,12 @@
       if (embed) mapFrame.src = embed;
       else if (lat && lng) mapFrame.src = `https://www.google.com/maps?q=${lat},${lng}&output=embed&z=15`;
       else mapFrame.src = `https://www.google.com/maps?q=cove ${encodeURIComponent(card.dataset.city)}&output=embed&z=13`;
+
+      detailCity.textContent = card.dataset.city || "";
+      detailAddress.textContent = card.dataset.address || "Adresse folgt";
+      detailPhone.textContent = card.dataset.phone || "";
+      detailPhone.href = `tel:${(card.dataset.phone || "").replace(/\s/g, "")}`;
+      detailHours.textContent = card.dataset.hours || "Nach Vereinbarung";
     });
   });
 

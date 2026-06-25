@@ -9,14 +9,13 @@
 {# 5.1 HERO #}
 <section class="hero">
   <div class="hero__media">
-    <img src="{{ url_for('static', filename='images/ui/hero-mannequin.png') }}" alt="Maßanzug auf Schneiderpuppe">
+    <img src="{{ url_for('static', filename='images/ui/hero-showroom.png') }}" alt="cove Showroom mit Maßanzügen und Schuhen">
   </div>
   <div class="hero__content">
     <span class="hero__eyebrow" data-i18n="hero.eyebrow">MAßSCHNEIDER SEIT GENERATIONEN</span>
-    <h1 class="hero__title" data-i18n="hero.title">MAßBEKLEIDUNG<br>VOM MAßSCHNEIDER</h1>
+    <h1 class="hero__title" data-i18n="hero.title">MAßBEKLEIDUNG<br><span>VOM</span> MAßSCHNEIDER</h1>
     <p class="hero__subtitle" data-i18n="hero.subtitle">Maßanzüge, Maßhemden und klassische Garderobe — gefertigt mit Tradition und Leidenschaft.</p>
     <div class="hero__actions">
-      <a href="/termin" class="btn btn--gold btn--lg" data-i18n="hero.cta">Beratungstermin vereinbaren</a>
       <a href="/standorte" class="btn btn--outline btn--lg" data-i18n="appointment.cta_locations">Standorte entdecken</a>
     </div>
   </div>
@@ -45,14 +44,18 @@
       'massanzug': 'Ein persönlicher Anzug mit ruhiger Linie, präzisem Sitz und Stoffen, die über Jahre Bestand haben.',
       'masshemd': 'Maßhemden für Alltag und Anlass — Kragen, Manschette, Stoff und Passform nach Ihren Vorgaben.',
       'hochzeit': 'Klassische Hochzeitsgarderobe mit Maß, Zurückhaltung und Details, die zum Tag passen.',
-      'schuhe': 'Ausgewählte Schuhmodelle und Pflegeprodukte als Fundament einer vollständigen Garderobe.'
+      'sakko': 'Ein Sakko nach Maß bringt Haltung in Business, Reise und private Garderobe.',
+      'mantel': 'Mäntel und Outerwear mit klarer Silhouette, abgestimmt auf Stoff, Saison und Nutzung.',
+      'masshose': 'Maßhosen mit sauberem Fall und Komfort — als separates Stück oder Teil eines Anzugs.',
+      'schuhe': 'Ausgewählte Schuhmodelle und Pflegeprodukte als Fundament einer vollständigen Garderobe.',
+      'onlineshop': 'Ready-to-wear, Accessoires, Pflege und Geschenke aus dem cove Sortiment.'
     } %}
-    {% for s in services if s.key in ['massanzug', 'masshemd', 'hochzeit', 'schuhe'] %}
+    {% for s in services %}
       <a href="{{ s.route }}" class="service-card service-card--{{ s.span }}">
         <img src="{{ url_for('static', filename='images/cove_original/' ~ s.card) }}" alt="{{ s.label_de }}" loading="lazy"
              onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-1.jpg') }}'">
         <div class="service-card__body">
-          <span class="service-card__label" data-i18n="nav.{{ s.key if s.key in ['massanzug','masshemd','hochzeit','sakko','mantel','schuhe'] else 'shop' }}">{{ s.label_de }}</span>
+          <span class="service-card__label">{{ s.label_de }}</span>
           <div class="service-card__title">{{ s.label_de }}</div>
           <p class="service-card__desc">{{ service_copy[s.key] }}</p>
           <span class="service-card__arrow">&#8594;</span>
@@ -155,47 +158,7 @@
     {% endfor %}
   </div>
   <div class="reviews__cta">
-    <a href="{{ google_reviews_link }}" target="_blank" rel="noopener" class="link-arrow" data-i18n="reviews.all">Alle Rezensionen auf Google</a> <span>&#8594;</span>
-  </div>
-</section>
-
-{# 5.8 LOCATIONS PREVIEW #}
-<section class="section section--tight">
-  <div class="section__header animate-on-scroll">
-    <span class="section-eyebrow" data-i18n="nav.locations">Standorte</span>
-    <h2 data-i18n="locations.title">19 Standorte deutschlandweit</h2>
-  </div>
-  <iframe class="loc-preview__map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-    src="https://www.google.com/maps?q=Deutschland&output=embed&z=6" title="cove Standorte"></iframe>
-  <div class="loc-pills">
-    {% for loc in locations %}
-      <a href="/standorte/{{ loc.slug }}" class="loc-pill">{{ loc.city }}</a>
-    {% endfor %}
-  </div>
-  <div class="loc-preview__cta">
-    <a href="/standorte" class="link-arrow" data-i18n="locations.find">Ihren nächsten Standort finden</a> <span>&#8594;</span>
-  </div>
-</section>
-
-{# 5.9 WIKI TEASER #}
-<section class="section">
-  <div class="wiki-teaser">
-    <div class="animate-on-scroll">
-      <span class="section-eyebrow" data-i18n="wiki.eyebrow">COVE WIKI</span>
-      <h2 data-i18n="wiki.title">Das Lexikon des Gentlemans</h2>
-      <div class="gold-rule gold-rule--left"></div>
-      <p style="color:var(--color-text-secondary)" data-i18n="wiki.body">Von Bespoke bis Harris Tweed — unser Wiki erklärt die Welt der Maßkonfektion.</p>
-      <a href="/wiki" class="link-arrow" data-i18n="wiki.cta">Wiki entdecken</a> <span>&#8594;</span>
-    </div>
-    <div class="wiki-teaser__cards animate-on-scroll">
-      {% for art in wiki_featured %}
-        {% set teaser = art.meta_description or (art.text_blocks and art.text_blocks[0].text) or "" %}
-        <a href="/wiki/{{ art.slug }}" class="wiki-card">
-          <div class="wiki-card__title">{{ art.title }}</div>
-          <p class="wiki-card__teaser">{{ teaser }}</p>
-        </a>
-      {% endfor %}
-    </div>
+    <a href="{{ google_reviews_link }}" target="_blank" rel="noopener" class="btn btn--outline" data-i18n="reviews.all">Alle Rezensionen auf Google</a>
   </div>
 </section>
 
