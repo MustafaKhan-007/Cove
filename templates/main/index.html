@@ -53,7 +53,8 @@
     } %}
     {% for s in services %}
       <a href="{{ s.route }}" class="service-card service-card--{{ s.span }}"{% if s.route.startswith('http') %} target="_blank" rel="noopener"{% endif %}>
-        <img src="{{ url_for('static', filename='images/cove_original/' ~ s.card) }}" alt="{{ s.label_de }}" loading="lazy"
+        {% set card_path = 'images/' ~ s.card if s.card.startswith('ui/') else 'images/cove_original/' ~ s.card %}
+        <img src="{{ url_for('static', filename=card_path) }}" alt="{{ s.label_de }}" loading="lazy"
              onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-1.jpg') }}'">
         <div class="service-card__body">
           <span class="service-card__label">{{ s.label_de }}</span>

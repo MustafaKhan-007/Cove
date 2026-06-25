@@ -588,7 +588,8 @@ button { font-family: var(--font-body); cursor: pointer; }
 .services__grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-4);
-  grid-auto-rows: 360px;
+  grid-auto-rows: auto;
+  align-items: start;
 }
 .service-card,
 .service-card--wide,
@@ -598,6 +599,7 @@ button { font-family: var(--font-body); cursor: pointer; }
 .service-card {
   border: 1px solid var(--color-border);
   background: var(--color-bg-elevated);
+  aspect-ratio: 1 / 1;
 }
 .service-card::after {
   background: linear-gradient(to top, rgba(24,20,15,.92) 0%, rgba(24,20,15,.18) 64%);
