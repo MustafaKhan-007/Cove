@@ -1,0 +1,40 @@
+{# COVE Website Rebuild — templates/main/faq.html — F.A.Q. #}
+{% extends "base.html" %}
+{% block page_id %}faq{% endblock %}
+{% block title %}COVE — F.A.Q. | Die Maßschneider{% endblock %}
+
+{% block content %}
+<div class="page-spacer"></div>
+<section class="section">
+  <div class="section__header">
+    <span class="section-eyebrow" data-i18n="nav.faq">F.A.Q.</span>
+    <h1 data-i18n="faq.title">Häufige Fragen</h1>
+    <p style="color:var(--color-text-secondary);margin-top:16px;" data-i18n="faq.subtitle">Antworten rund um Maßbekleidung und Ihren Termin bei cove.</p>
+  </div>
+
+  <div class="faq-list">
+    {% for item in faqs %}
+      <div class="faq-item">
+        <button class="faq-item__q">
+          <span>{{ item.q }}</span>
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a"><p>{{ item.a }}</p></div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.querySelectorAll(".faq-item__q").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".faq-item");
+      const answer = item.querySelector(".faq-item__a");
+      const open = item.classList.toggle("is-open");
+      answer.style.maxHeight = open ? answer.scrollHeight + "px" : null;
+    });
+  });
+</script>
+{% endblock %}

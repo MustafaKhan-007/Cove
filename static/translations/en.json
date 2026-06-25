@@ -1,0 +1,138 @@
+{
+  "nav": {
+    "book": "Book Appointment",
+    "shop": "Shop",
+    "massanzug": "BESPOKE SUIT",
+    "masshemd": "BESPOKE SHIRT",
+    "hochzeit": "WEDDING",
+    "sakko": "BESPOKE JACKET",
+    "mantel": "BESPOKE COAT",
+    "schuhe": "SHOES",
+    "about": "About Us",
+    "locations": "Locations",
+    "wiki": "Wiki",
+    "faq": "F.A.Q.",
+    "menu_open": "Open menu",
+    "menu_close": "Close menu"
+  },
+  "hero": {
+    "eyebrow": "BESPOKE TAILORS FOR GENERATIONS",
+    "title": "BESPOKE CLOTHING<br>BY MASTER TAILORS",
+    "subtitle": "Bespoke suits, shirts and classic wardrobe — crafted with tradition and passion.",
+    "cta": "Book a Consultation",
+    "scroll": "Discover"
+  },
+  "credentials": {
+    "title": "Award-Winning Craftsmanship"
+  },
+  "services": {
+    "eyebrow": "OUR EXPERTISE",
+    "title": "Made for You.<br>Every detail bespoke.",
+    "discover": "Discover"
+  },
+  "gallery": {
+    "eyebrow": "INSIGHTS",
+    "title": "Craft in Pictures",
+    "view_all": "View All",
+    "view_less": "Show Less"
+  },
+  "about": {
+    "eyebrow": "ABOUT US",
+    "title": "Bespoke clothing with tradition and passion",
+    "cta": "Learn More"
+  },
+  "appointment": {
+    "title": "Your Personal Appointment",
+    "subtitle": "Visit us at one of our 19 ateliers across Germany.",
+    "cta_book": "Book Appointment",
+    "cta_locations": "Explore Locations"
+  },
+  "reviews": {
+    "title": "What Our Clients Say",
+    "summary": "Based on {count} reviews",
+    "read_more": "read more",
+    "all": "All reviews on Google"
+  },
+  "locations": {
+    "title": "19 Locations Across Germany",
+    "subtitle": "Find the cove atelier nearest to you.",
+    "find": "Find your nearest location",
+    "search": "Search city…",
+    "book_here": "Book appointment in {city}",
+    "back": "All locations",
+    "address": "Address",
+    "phone": "Phone",
+    "hours": "Opening Hours"
+  },
+  "wiki": {
+    "eyebrow": "COVE WIKI",
+    "title": "The Gentleman's Lexicon",
+    "body": "From Bespoke to Harris Tweed — our wiki explains the world of bespoke tailoring.",
+    "cta": "Explore the Wiki",
+    "back": "Back to the Wiki",
+    "related": "Related Articles",
+    "read_time": "min read",
+    "index_title": "The cove Wiki",
+    "index_subtitle": "The lexicon of bespoke tailoring — from A to Z."
+  },
+  "footer": {
+    "tagline": "Bespoke clothing by master tailors — since 1999.",
+    "nav": "Navigation",
+    "assortment": "Assortment",
+    "contact": "Contact",
+    "email": "Email",
+    "rights": "© 2025 COVE GmbH & Co KG",
+    "imprint": "Imprint",
+    "privacy": "Privacy"
+  },
+  "booking": {
+    "title": "Book an Appointment",
+    "subtitle": "Just a few steps to your personal consultation.",
+    "step": "Step",
+    "of": "of",
+    "next": "Next",
+    "back": "Back",
+    "confirm": "Confirm Appointment",
+    "step1_title": "Select Service",
+    "step2_title": "Choose Location",
+    "step3_title": "Date & Time",
+    "step4_title": "Your Details",
+    "step5_title": "Confirmation",
+    "select_location": "Please choose a location",
+    "salutation": "Salutation",
+    "herr": "Mr",
+    "frau": "Mrs",
+    "none": "Prefer not to say",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email Address",
+    "phone": "Phone Number (optional)",
+    "message": "Message (optional)",
+    "privacy": "I agree to the privacy policy.",
+    "summary_service": "Service",
+    "summary_location": "Location",
+    "summary_datetime": "Date & Time",
+    "summary_name": "Name",
+    "summary_contact": "Contact",
+    "edit": "Edit",
+    "success": "Thank you! Your appointment request has been received.",
+    "service_beratung": "CONSULTATION",
+    "service_sonstiges": "OTHER"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers about bespoke clothing and your appointment at cove."
+  },
+  "shop": {
+    "title": "Shop",
+    "subtitle": "Ready To Wear, shoes, accessories and more.",
+    "add_to_cart": "Add to Cart",
+    "view_original": "View in original shop",
+    "categories": "Categories",
+    "all": "All Products"
+  },
+  "common": {
+    "discover_more": "Discover More",
+    "loading": "Loading…"
+  }
+}

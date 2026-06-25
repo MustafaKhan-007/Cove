@@ -1,0 +1,19 @@
+{# COVE Website Rebuild — templates/shop/_sidebar.html — category tree #}
+<aside class="shop-sidebar">
+  <h4 data-i18n="shop.categories">Kategorien</h4>
+  <ul class="shop-cat-list">
+    <li><a href="/shop" class="{% if not active_category %}is-active{% endif %}" data-i18n="shop.all">Alle Produkte</a></li>
+    {% for cat in categories %}
+      <li>
+        <a href="/shop/produkt-kategorie/{{ cat.slug }}" class="{% if active_category == cat.slug %}is-active{% endif %}">{{ cat.label_de }}</a>
+        {% if cat.children %}
+          <ul class="children">
+            {% for ch in cat.children %}
+              <li><a href="/shop/produkt-kategorie/{{ ch.slug }}" class="{% if active_category == ch.slug %}is-active{% endif %}">{{ ch.label_de }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</aside>

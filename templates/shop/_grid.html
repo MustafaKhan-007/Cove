@@ -1,0 +1,25 @@
+{# COVE Website Rebuild — templates/shop/_grid.html — product grid #}
+{% if products %}
+  <div class="product-grid">
+    {% for p in products %}
+      <article class="product-card">
+        <a href="{{ p.url }}" target="_blank" rel="noopener" class="product-card__media">
+          {% if p.image %}
+            <img src="{{ p.image }}" alt="{{ p.name }}" loading="lazy" onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-7.jpg') }}'">
+          {% else %}
+            <img src="{{ url_for('static', filename='images/cove_original/home-card-7.jpg') }}" alt="{{ p.name }}" loading="lazy">
+          {% endif %}
+          <div class="product-card__cart" data-i18n="shop.view_original">Im Original-Shop ansehen</div>
+        </a>
+        {% if p.brand %}<div class="product-card__brand">{{ p.brand }}</div>{% endif %}
+        <a href="{{ p.url }}" target="_blank" rel="noopener"><div class="product-card__name">{{ p.name }}</div></a>
+        {% if p.variants %}<div class="product-card__brand" style="margin-top:4px;">{{ p.variants }}</div>{% endif %}
+        {% if p.price %}<div class="product-card__price">{{ p.price }}</div>{% endif %}
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <p style="color:var(--color-text-secondary);" data-i18n="common.loading">Keine Produkte in dieser Kategorie.</p>
+{% endif %}
+{# NOTE: checkout is not reimplemented — links redirect to the original cove.de shop.
+   TODO: integrate a real cart/checkout backend for production. #}

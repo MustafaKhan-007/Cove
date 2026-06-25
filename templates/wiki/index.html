@@ -1,0 +1,45 @@
+{# COVE Website Rebuild — templates/wiki/index.html — wiki A–Z index #}
+{% extends "base.html" %}
+{% block page_id %}wiki{% endblock %}
+{% block title %}COVE — Das cove-Wiki | Lexikon der Maßschneiderei{% endblock %}
+
+{% block content %}
+<section class="page-hero" style="height:42vh;min-height:320px;">
+  <img src="{{ url_for('static', filename='images/cove_original/slide-1-8.jpg') }}" alt="cove Wiki"
+       onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-4.jpg') }}'">
+  <div class="page-hero__content">
+    <span class="section-eyebrow" data-i18n="wiki.eyebrow">COVE WIKI</span>
+    <h1 data-i18n="wiki.index_title">Das cove-Wiki</h1>
+    <p data-i18n="wiki.index_subtitle">Das Lexikon der Maßschneiderei — von A bis Z.</p>
+  </div>
+</section>
+
+<section class="section">
+  <nav class="wiki-nav">
+    {% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' %}
+      {% if letter in letters %}
+        <a href="#letter-{{ letter }}">{{ letter }}</a>
+      {% else %}
+        <a style="opacity:.25;pointer-events:none;">{{ letter }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  {% for letter in letters %}
+    <div class="wiki-group" id="letter-{{ letter }}">
+      <div class="wiki-group__letter">{{ letter }}</div>
+      <div class="wiki-entries">
+        {% for entry in groups[letter] %}
+          <div class="wiki-entry">
+            {% if entry.slug in seeded %}
+              <a href="/wiki/{{ entry.slug }}" class="wiki-entry__seeded">{{ entry.title }}</a>
+            {% else %}
+              <a href="/wiki/{{ entry.slug }}">{{ entry.title }}</a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</section>
+{% endblock %}

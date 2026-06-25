@@ -1,0 +1,23 @@
+{# COVE Website Rebuild — templates/shop/category.html — shop category view #}
+{% extends "base.html" %}
+{% block page_id %}shop{% endblock %}
+{% block title %}COVE — {{ category.label_de }} | Shop{% endblock %}
+
+{% block content %}
+<div class="page-spacer"></div>
+<section class="section--tight">
+  <div class="section__header">
+    <span class="section-eyebrow" data-i18n="nav.shop">Shop</span>
+    <h1>{{ category.label_de }}</h1>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="shop-layout">
+    {% include "shop/_sidebar.html" %}
+    <div>
+      {% include "shop/_grid.html" %}
+    </div>
+  </div>
+</section>
+{% endblock %}

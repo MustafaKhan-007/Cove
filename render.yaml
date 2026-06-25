@@ -1,0 +1,25 @@
+# COVE Website Rebuild — render.yaml — Render.com deployment config
+services:
+  - type: web
+    name: cove-website
+    env: python
+    region: frankfurt
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --workers 2 --timeout 120 --preload
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: cove-db
+          property: connectionString
+
+databases:
+  - name: cove-db
+    databaseName: cove
+    plan: free

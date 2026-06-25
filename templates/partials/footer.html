@@ -1,0 +1,56 @@
+{# COVE Website Rebuild — templates/partials/footer.html — site footer #}
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__col">
+      <div class="footer__logo">
+        <img src="{{ url_for('static', filename='images/cove_original/logo.svg') }}" alt="COVE">
+      </div>
+      <p class="footer__tagline" data-i18n="footer.tagline">Maßbekleidung vom Maßschneider — seit 1999.</p>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/cove.diemassschneider/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+        <a href="https://www.facebook.com/cove.diemassschneider/" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h4 data-i18n="footer.nav">Navigation</h4>
+      <ul>
+        <li><a href="/ueber-uns" data-i18n="nav.about">Über uns</a></li>
+        <li><a href="/standorte" data-i18n="nav.locations">Standorte</a></li>
+        <li><a href="/wiki" data-i18n="nav.wiki">Wiki</a></li>
+        <li><a href="/faq" data-i18n="nav.faq">F.A.Q.</a></li>
+        <li><a href="/shop" data-i18n="nav.shop">Shop</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4 data-i18n="footer.assortment">Sortiment</h4>
+      <ul>
+        <li><a href="/massanzug" data-i18n="nav.massanzug">MAßANZUG</a></li>
+        <li><a href="/masshemd" data-i18n="nav.masshemd">MAßHEMD</a></li>
+        <li><a href="/hochzeit" data-i18n="nav.hochzeit">HOCHZEIT</a></li>
+        <li><a href="/sakko" data-i18n="nav.sakko">MAßSAKKO</a></li>
+        <li><a href="/mantel" data-i18n="nav.mantel">MAßMANTEL</a></li>
+        <li><a href="/schuhe" data-i18n="nav.schuhe">SCHUHE</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h4 data-i18n="footer.contact">Kontakt</h4>
+      <ul>
+        <li><a href="tel:{{ PHONE | replace(' ', '') }}">{{ PHONE }}</a></li>
+        <li><a href="mailto:info@cove.de">info@cove.de</a></li>
+      </ul>
+      <a href="/termin" class="btn btn--outline btn--sm mt-5" data-i18n="nav.book" style="margin-top:24px;">Termin buchen</a>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span><span data-i18n="footer.rights">© 2025 COVE GmbH &amp; Co KG</span> · <a href="#" data-i18n="footer.imprint">Impressum</a> · <a href="#" data-i18n="footer.privacy">Datenschutz</a></span>
+    <span class="footer__lang">
+      <button class="lang-btn" data-lang="de">DE</button>
+      <span class="nav__lang-sep">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </span>
+  </div>
+</footer>

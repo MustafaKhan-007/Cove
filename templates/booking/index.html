@@ -1,0 +1,179 @@
+{# COVE Website Rebuild — templates/booking/index.html — multi-step booking wizard #}
+{% extends "base.html" %}
+{% block page_id %}booking{% endblock %}
+{% block title %}COVE — Termin buchen | Beratungstermin vereinbaren{% endblock %}
+
+{% block content %}
+<div class="page-spacer"></div>
+
+{% if shore_url %}
+  {# Client prefers external Shore booking — redirect. #}
+  <meta http-equiv="refresh" content="0; url={{ shore_url }}">
+{% endif %}
+
+<section class="section">
+  <div class="section__header">
+    <span class="section-eyebrow" data-i18n="nav.book">Termin buchen</span>
+    <h1 data-i18n="booking.title">Termin vereinbaren</h1>
+    <p style="color:var(--color-text-secondary);margin-top:12px;" data-i18n="booking.subtitle">In wenigen Schritten zu Ihrem persönlichen Beratungstermin.</p>
+  </div>
+
+  <div class="booking" id="booking">
+    <div class="booking__card">
+      <div class="booking-progress">
+        {% for i in range(5) %}<div class="booking-progress__step"></div>{% endfor %}
+      </div>
+      <div class="booking__step-label">Schritt 1 von 5</div>
+
+      {# STEP 1 — SERVICE #}
+      <div class="booking__step is-active" data-step="1">
+        <h3 class="booking__step-title" data-i18n="booking.step1_title">Service auswählen</h3>
+        <div class="service-tiles">
+          {% set tiles = [
+            ('MAßANZUG','nav.massanzug','✂'),
+            ('MAßHEMD','nav.masshemd','▤'),
+            ('MAßSAKKO','nav.sakko','◫'),
+            ('MAßMANTEL','nav.mantel','❉'),
+            ('HOCHZEIT','nav.hochzeit','♛'),
+            ('SCHUHE','nav.schuhe','◆')
+          ] %}
+          {% for label, key, icon in tiles %}
+            <div class="service-tile" data-service="{{ label }}">
+              <span class="service-tile__icon">{{ icon }}</span>
+              <span data-i18n="{{ key }}">{{ label }}</span>
+            </div>
+          {% endfor %}
+          <div class="service-tile" data-service="BERATUNG">
+            <span class="service-tile__icon">☎</span>
+            <span data-i18n="booking.service_beratung">BERATUNG</span>
+          </div>
+          <div class="service-tile" data-service="SONSTIGES">
+            <span class="service-tile__icon">＋</span>
+            <span data-i18n="booking.service_sonstiges">SONSTIGES</span>
+          </div>
+        </div>
+      </div>
+
+      {# STEP 2 — LOCATION #}
+      <div class="booking__step" data-step="2">
+        <h3 class="booking__step-title" data-i18n="booking.step2_title">Standort wählen</h3>
+        <div class="form-group">
+          <label class="form-label" data-i18n="nav.locations">Standort</label>
+          <select class="form-select" id="bookingLocation">
+            <option value="" data-i18n="booking.select_location">Bitte Standort wählen</option>
+            {% for region, slugs in regions.items() %}
+              <optgroup label="{{ region }}">
+                {% for slug in slugs %}
+                  {% set loc = (locations | selectattr('slug','equalto',slug) | list | first) %}
+                  {% if loc %}<option value="{{ loc.slug }}">{{ loc.city }}</option>{% endif %}
+                {% endfor %}
+              </optgroup>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      {# STEP 3 — DATE & TIME #}
+      <div class="booking__step" data-step="3">
+        <h3 class="booking__step-title" data-i18n="booking.step3_title">Datum &amp; Uhrzeit</h3>
+        <div class="calendar">
+          <div class="calendar__header">
+            <button class="calendar__nav" id="calPrev" aria-label="Vorheriger Monat">‹</button>
+            <div class="calendar__title" id="calTitle"></div>
+            <button class="calendar__nav" id="calNext" aria-label="Nächster Monat">›</button>
+          </div>
+          <div class="calendar__grid" id="calGrid"></div>
+        </div>
+        <div class="timeslots" id="timeslots">
+          {% for t in ['09:00','10:00','11:00','12:00','14:00','15:00','16:00','17:00'] %}
+            <div class="timeslot" data-time="{{ t }}">{{ t }}</div>
+          {% endfor %}
+        </div>
+      </div>
+
+      {# STEP 4 — DETAILS #}
+      <div class="booking__step" data-step="4">
+        <h3 class="booking__step-title" data-i18n="booking.step4_title">Ihre Daten</h3>
+        <div class="form-group">
+          <label class="form-label" data-i18n="booking.salutation">Anrede</label>
+          <div class="radio-pills">
+            <label class="radio-pill is-active"><input type="radio" name="salutation" value="Herr"><span data-i18n="booking.herr">Herr</span></label>
+            <label class="radio-pill"><input type="radio" name="salutation" value="Frau"><span data-i18n="booking.frau">Frau</span></label>
+            <label class="radio-pill"><input type="radio" name="salutation" value="Keine Angabe" checked><span data-i18n="booking.none">Keine Angabe</span></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="booking.first_name">Vorname</label>
+          <input type="text" class="form-input" id="field_first_name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="booking.last_name">Nachname</label>
+          <input type="text" class="form-input" id="field_last_name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="booking.email">E-Mail-Adresse</label>
+          <input type="email" class="form-input" id="field_email" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="booking.phone">Telefonnummer (optional)</label>
+          <input type="tel" class="form-input" id="field_phone">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="booking.message">Nachricht (optional)</label>
+          <textarea class="form-textarea" id="field_message"></textarea>
+        </div>
+        <label class="checkbox">
+          <input type="checkbox" id="field_privacy">
+          <span data-i18n="booking.privacy">Ich stimme der Datenschutzerklärung zu.</span>
+        </label>
+      </div>
+
+      {# STEP 5 — CONFIRMATION #}
+      <div class="booking__step" data-step="5">
+        <h3 class="booking__step-title" data-i18n="booking.step5_title">Bestätigung</h3>
+        <div class="booking-summary">
+          <div class="booking-summary__row">
+            <span class="booking-summary__label" data-i18n="booking.summary_service">Service</span>
+            <span class="booking-summary__value"><span id="sum_service">—</span> <button class="link-arrow" data-goto="1" style="font-size:0.65rem;background:none;border:none;" data-i18n="booking.edit">Bearbeiten</button></span>
+          </div>
+          <div class="booking-summary__row">
+            <span class="booking-summary__label" data-i18n="booking.summary_location">Standort</span>
+            <span class="booking-summary__value"><span id="sum_location">—</span> <button class="link-arrow" data-goto="2" style="font-size:0.65rem;background:none;border:none;" data-i18n="booking.edit">Bearbeiten</button></span>
+          </div>
+          <div class="booking-summary__row">
+            <span class="booking-summary__label" data-i18n="booking.summary_datetime">Datum &amp; Uhrzeit</span>
+            <span class="booking-summary__value"><span id="sum_datetime">—</span> <button class="link-arrow" data-goto="3" style="font-size:0.65rem;background:none;border:none;" data-i18n="booking.edit">Bearbeiten</button></span>
+          </div>
+          <div class="booking-summary__row">
+            <span class="booking-summary__label" data-i18n="booking.summary_name">Name</span>
+            <span class="booking-summary__value" id="sum_name">—</span>
+          </div>
+          <div class="booking-summary__row">
+            <span class="booking-summary__label" data-i18n="booking.summary_contact">Kontakt</span>
+            <span class="booking-summary__value" id="sum_contact">—</span>
+          </div>
+        </div>
+      </div>
+
+      {# NAV BUTTONS #}
+      <div class="booking__actions">
+        <button class="btn btn--ghost" id="bookingBack" data-i18n="booking.back">Zurück</button>
+        <button class="btn btn--gold" id="bookingNext" data-i18n="booking.next" disabled>Weiter</button>
+        <button class="btn btn--gold" id="bookingConfirm" data-i18n="booking.confirm" style="display:none;" disabled>Termin bestätigen</button>
+      </div>
+
+      {# SUCCESS #}
+      <div class="booking__success">
+        <div class="booking__check">✓</div>
+        <h3 style="margin-bottom:12px;">Vielen Dank!</h3>
+        <p class="booking__success-msg" style="color:var(--color-text-secondary);">Ihre Terminanfrage ist eingegangen.</p>
+        <a href="/" class="btn btn--outline" style="margin-top:24px;">Zur Startseite</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/booking.js') }}"></script>
+{% endblock %}

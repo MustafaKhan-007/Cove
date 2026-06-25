@@ -1,0 +1,25 @@
+{# COVE Website Rebuild — templates/shop/product.html — single shop product #}
+{% extends "base.html" %}
+{% block page_id %}shop{% endblock %}
+{% block title %}COVE — {{ product.name }} | Shop{% endblock %}
+
+{% block content %}
+<div class="page-spacer"></div>
+<section class="section">
+  <div class="about-teaser">
+    <div class="about-teaser__media animate-on-scroll">
+      <img src="{{ product.image or url_for('static', filename='images/cove_original/home-card-7.jpg') }}"
+           alt="{{ product.name }}" onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-7.jpg') }}'">
+    </div>
+    <div class="about-teaser__body animate-on-scroll">
+      {% if product.brand %}<span class="section-eyebrow">{{ product.brand }}</span>{% endif %}
+      <h1>{{ product.name }}</h1>
+      {% if product.price %}<div class="product-card__price" style="font-size:1.25rem;margin:16px 0;">{{ product.price }}</div>{% endif %}
+      {% if product.variants %}<p style="color:var(--color-text-secondary);">{{ product.variants }}</p>{% endif %}
+      <div class="gold-rule gold-rule--left"></div>
+      <a href="{{ product.url }}" target="_blank" rel="noopener" class="btn btn--gold" data-i18n="shop.view_original">Im Original-Shop ansehen</a>
+      <div style="margin-top:16px;"><a href="/shop" class="link-arrow" style="font-size:0.7rem;" data-i18n="shop.all">Alle Produkte</a></div>
+    </div>
+  </div>
+</section>
+{% endblock %}

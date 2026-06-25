@@ -1,0 +1,24 @@
+{# COVE Website Rebuild — templates/shop/index.html — shop landing #}
+{% extends "base.html" %}
+{% block page_id %}shop{% endblock %}
+{% block title %}COVE — Shop | Ready To Wear & Accessoires{% endblock %}
+
+{% block content %}
+<div class="page-spacer"></div>
+<section class="section--tight">
+  <div class="section__header">
+    <span class="section-eyebrow" data-i18n="nav.shop">Shop</span>
+    <h1 data-i18n="shop.title">Shop</h1>
+    <p style="color:var(--color-text-secondary);margin-top:12px;" data-i18n="shop.subtitle">Ready To Wear, Schuhe, Accessoires und mehr.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="shop-layout">
+    {% include "shop/_sidebar.html" %}
+    <div>
+      {% include "shop/_grid.html" %}
+    </div>
+  </div>
+</section>
+{% endblock %}

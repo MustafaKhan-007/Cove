@@ -1,0 +1,138 @@
+{
+  "nav": {
+    "book": "Termin buchen",
+    "shop": "Shop",
+    "massanzug": "MAßANZUG",
+    "masshemd": "MAßHEMD",
+    "hochzeit": "HOCHZEIT",
+    "sakko": "MAßSAKKO",
+    "mantel": "MAßMANTEL",
+    "schuhe": "SCHUHE",
+    "about": "Über uns",
+    "locations": "Standorte",
+    "wiki": "Wiki",
+    "faq": "F.A.Q.",
+    "menu_open": "Menü öffnen",
+    "menu_close": "Menü schließen"
+  },
+  "hero": {
+    "eyebrow": "MAßSCHNEIDER SEIT GENERATIONEN",
+    "title": "MAßBEKLEIDUNG<br>VOM MAßSCHNEIDER",
+    "subtitle": "Maßanzüge, Maßhemden und klassische Garderobe — gefertigt mit Tradition und Leidenschaft.",
+    "cta": "Beratungstermin vereinbaren",
+    "scroll": "Entdecken"
+  },
+  "credentials": {
+    "title": "Ausgezeichnete Handwerkskunst"
+  },
+  "services": {
+    "eyebrow": "UNSERE EXPERTISE",
+    "title": "Gefertigt für Sie.<br>Jedes Detail nach Maß.",
+    "discover": "Entdecken"
+  },
+  "gallery": {
+    "eyebrow": "EINBLICKE",
+    "title": "Handwerk in Bildern",
+    "view_all": "Alle Bilder",
+    "view_less": "Weniger anzeigen"
+  },
+  "about": {
+    "eyebrow": "ÜBER UNS",
+    "title": "Maßkleidung mit Tradition und Leidenschaft",
+    "cta": "Mehr erfahren"
+  },
+  "appointment": {
+    "title": "Ihr persönlicher Termin",
+    "subtitle": "Besuchen Sie uns in einer unserer 19 Filialen deutschlandweit.",
+    "cta_book": "Termin vereinbaren",
+    "cta_locations": "Standorte entdecken"
+  },
+  "reviews": {
+    "title": "Was unsere Kunden sagen",
+    "summary": "Basierend auf {count} Rezensionen",
+    "read_more": "mehr lesen",
+    "all": "Alle Rezensionen auf Google"
+  },
+  "locations": {
+    "title": "19 Standorte deutschlandweit",
+    "subtitle": "Finden Sie das cove-Atelier in Ihrer Nähe.",
+    "find": "Ihren nächsten Standort finden",
+    "search": "Stadt suchen…",
+    "book_here": "Termin in {city} buchen",
+    "back": "Alle Standorte",
+    "address": "Adresse",
+    "phone": "Telefon",
+    "hours": "Öffnungszeiten"
+  },
+  "wiki": {
+    "eyebrow": "COVE WIKI",
+    "title": "Das Lexikon des Gentlemans",
+    "body": "Von Bespoke bis Harris Tweed — unser Wiki erklärt die Welt der Maßkonfektion.",
+    "cta": "Wiki entdecken",
+    "back": "Zurück zum Wiki",
+    "related": "Verwandte Artikel",
+    "read_time": "Min. Lesezeit",
+    "index_title": "Das cove-Wiki",
+    "index_subtitle": "Das Lexikon der Maßschneiderei — von A bis Z."
+  },
+  "footer": {
+    "tagline": "Maßbekleidung vom Maßschneider — seit 1999.",
+    "nav": "Navigation",
+    "assortment": "Sortiment",
+    "contact": "Kontakt",
+    "email": "E-Mail",
+    "rights": "© 2025 COVE GmbH & Co KG",
+    "imprint": "Impressum",
+    "privacy": "Datenschutz"
+  },
+  "booking": {
+    "title": "Termin vereinbaren",
+    "subtitle": "In wenigen Schritten zu Ihrem persönlichen Beratungstermin.",
+    "step": "Schritt",
+    "of": "von",
+    "next": "Weiter",
+    "back": "Zurück",
+    "confirm": "Termin bestätigen",
+    "step1_title": "Service auswählen",
+    "step2_title": "Standort wählen",
+    "step3_title": "Datum & Uhrzeit",
+    "step4_title": "Ihre Daten",
+    "step5_title": "Bestätigung",
+    "select_location": "Bitte Standort wählen",
+    "salutation": "Anrede",
+    "herr": "Herr",
+    "frau": "Frau",
+    "none": "Keine Angabe",
+    "first_name": "Vorname",
+    "last_name": "Nachname",
+    "email": "E-Mail-Adresse",
+    "phone": "Telefonnummer (optional)",
+    "message": "Nachricht (optional)",
+    "privacy": "Ich stimme der Datenschutzerklärung zu.",
+    "summary_service": "Service",
+    "summary_location": "Standort",
+    "summary_datetime": "Datum & Uhrzeit",
+    "summary_name": "Name",
+    "summary_contact": "Kontakt",
+    "edit": "Bearbeiten",
+    "success": "Vielen Dank! Ihre Terminanfrage ist eingegangen.",
+    "service_beratung": "BERATUNG",
+    "service_sonstiges": "SONSTIGES"
+  },
+  "faq": {
+    "title": "Häufige Fragen",
+    "subtitle": "Antworten rund um Maßbekleidung und Ihren Termin bei cove."
+  },
+  "shop": {
+    "title": "Shop",
+    "subtitle": "Ready To Wear, Schuhe, Accessoires und mehr.",
+    "add_to_cart": "In den Warenkorb",
+    "view_original": "Im Original-Shop ansehen",
+    "categories": "Kategorien",
+    "all": "Alle Produkte"
+  },
+  "common": {
+    "discover_more": "Mehr entdecken",
+    "loading": "Wird geladen…"
+  }
+}

@@ -1,0 +1,53 @@
+{# COVE Website Rebuild — templates/main/product.html — product/service detail #}
+{% extends "base.html" %}
+{% block page_id %}product{% endblock %}
+{% block title %}COVE — {{ meta.title_de }} | Die Maßschneider{% endblock %}
+{% block meta_description %}{{ product.meta_description }}{% endblock %}
+
+{% set images = product.images or [] %}
+{% set hero_img = images[0] if images else url_for('static', filename='images/cove_original/home-card-1.jpg') %}
+
+{% block content %}
+<section class="page-hero">
+  <img src="{{ hero_img if images else hero_img }}" alt="{{ meta.title_de }}"
+       onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-2.jpg') }}'">
+  <div class="page-hero__content">
+    <span class="section-eyebrow">cove</span>
+    <h1>{{ (product.h1[0] if product.h1 else meta.title_de) }}</h1>
+  </div>
+</section>
+
+<section class="section">
+  {% set paras = (product.text_blocks or []) | selectattr('tag', 'equalto', 'p') | map(attribute='text') | list %}
+  {% set heads = (product.text_blocks or []) | selectattr('tag', 'equalto', 'h2') | map(attribute='text') | list %}
+  <div class="prose" style="max-width:820px;margin:0 auto;">
+    {% if heads %}<h2>{{ heads[0] }}</h2><div class="gold-rule gold-rule--left"></div>{% endif %}
+    {% if paras %}
+      {% for p in paras[:6] %}<p>{{ p }}</p>{% endfor %}
+    {% else %}
+      <p>TODO: populate from scraped_content/products.json — Inhalt für {{ meta.title_de }}.</p>
+    {% endif %}
+    <a href="/termin" class="btn btn--gold mt-5">Termin buchen</a>
+  </div>
+
+  {% if images|length > 1 %}
+    <div class="gallery__grid" style="columns:3;margin-top:64px;max-width:1100px;margin-left:auto;margin-right:auto;">
+      {% for img in images[1:13] %}
+        <figure class="gallery__item">
+          <img src="{{ img }}" alt="{{ meta.title_de }}" loading="lazy" onerror="this.parentNode.style.display='none'">
+        </figure>
+      {% endfor %}
+    </div>
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox__close" aria-label="Schließen">&times;</button>
+      <button class="lightbox__nav lightbox__nav--prev">&#8249;</button>
+      <img class="lightbox__img" src="" alt="">
+      <button class="lightbox__nav lightbox__nav--next">&#8250;</button>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
+{% endblock %}

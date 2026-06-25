@@ -1,0 +1,53 @@
+{# COVE Website Rebuild — templates/wiki/article.html — single wiki article #}
+{% extends "base.html" %}
+{% block page_id %}wiki{% endblock %}
+{% block title %}COVE Wiki — {{ article.title }}{% endblock %}
+{% block meta_description %}{{ article.meta_description }}{% endblock %}
+
+{% block content %}
+<div class="page-spacer"></div>
+<section class="section">
+  <article class="article">
+    {% set paras = (article.text_blocks or []) | selectattr('tag', 'equalto', 'p') | map(attribute='text') | list %}
+    {% set words = (paras | join(' ')).split(' ') | length %}
+    <span class="section-eyebrow" data-i18n="wiki.eyebrow">COVE WIKI</span>
+    <h1>{{ article.title }}</h1>
+    <div class="article__meta">
+      <span class="article__tag">Wiki</span>
+      <span>{{ ((words / 200) | round(0, 'ceil')) | int or 1 }} <span data-i18n="wiki.read_time">Min. Lesezeit</span></span>
+    </div>
+    <div class="gold-rule gold-rule--left"></div>
+
+    <div class="prose">
+      {% if paras %}
+        {% for p in paras %}<p>{{ p }}</p>{% endfor %}
+      {% else %}
+        <p>{{ article.meta_description }}</p>
+      {% endif %}
+      {% if article.images %}
+        {% for img in article.images[:3] %}
+          <img src="{{ img }}" alt="{{ article.title }}" loading="lazy" onerror="this.style.display='none'">
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if related %}
+      <div class="article-related">
+        <span class="section-eyebrow" data-i18n="wiki.related">Verwandte Artikel</span>
+        <div class="wiki-teaser__cards" style="grid-template-columns:repeat(3,1fr);margin-top:24px;">
+          {% for r in related %}
+            <a href="/wiki/{{ r.slug }}" class="wiki-card">
+              <div class="wiki-card__title">{{ r.title }}</div>
+              <p class="wiki-card__teaser">{{ r.meta_description or (r.text_blocks and r.text_blocks[0].text) }}</p>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div style="margin-top:40px;">
+      <a href="/wiki" class="link-arrow" data-i18n="wiki.back">Zurück zum Wiki</a>
+    </div>
+  </article>
+</section>
+{% endblock %}

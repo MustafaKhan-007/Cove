@@ -1,0 +1,35 @@
+{# COVE Website Rebuild — templates/base.html — master layout #}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}COVE — Die Maßschneider{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}cove schneidert Maßbekleidung ganz nach Ihren Vorstellungen — Die Maßschneider für individuelle Anzüge, Hemden und klassische Garderobe.{% endblock %}">
+  <link rel="alternate" hreflang="de" href="{{ request.url }}">
+  <link rel="alternate" hreflang="en" href="{{ request.url }}">
+  <link rel="icon" href="{{ url_for('static', filename='images/cove_original/logo.svg') }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+  {% block head_extra %}{% endblock %}
+</head>
+<body data-page="{% block page_id %}{% endblock %}">
+
+  {% include "partials/nav.html" %}
+
+  <main id="content">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.html" %}
+
+  <script src="{{ url_for('static', filename='js/language.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

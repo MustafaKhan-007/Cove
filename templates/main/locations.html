@@ -1,0 +1,66 @@
+{# COVE Website Rebuild — templates/main/locations.html — Standorte (two-panel) #}
+{% extends "base.html" %}
+{% block page_id %}locations{% endblock %}
+{% block title %}COVE — Standorte | 19 Ateliers deutschlandweit{% endblock %}
+
+{% block content %}
+<div class="page-spacer"></div>
+<section class="section--tight" style="padding-bottom:0;">
+  <div class="section__header">
+    <span class="section-eyebrow">19</span>
+    <h1 data-i18n="locations.title">19 Standorte deutschlandweit</h1>
+    <p style="color:var(--color-text-secondary);margin-top:12px;" data-i18n="locations.subtitle">Finden Sie das cove-Atelier in Ihrer Nähe.</p>
+  </div>
+</section>
+
+<section class="loc-layout">
+  <div class="loc-list" id="locList">
+    <div class="loc-search">
+      <input type="text" class="form-input" id="locSearch" placeholder="Stadt suchen…" data-i18n-attr="placeholder:locations.search">
+    </div>
+    {% for loc in locations %}
+      <div class="loc-card{% if loop.first %} is-active{% endif %}" data-slug="{{ loc.slug }}"
+           data-embed="{{ loc.map_embed }}" data-city="{{ loc.city }}"
+           {% if loc.coords %}data-lat="{{ loc.coords.lat }}" data-lng="{{ loc.coords.lng }}"{% endif %}>
+        <div class="loc-card__city">{{ loc.city }}</div>
+        {% if loc.address %}<div class="loc-card__meta">{{ loc.address }}</div>{% endif %}
+        <div class="loc-card__meta">{{ loc.phone }}</div>
+        <a href="/standorte/{{ loc.slug }}" class="link-arrow" style="font-size:0.7rem;margin-top:8px;">Details &#8594;</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="loc-map">
+    <iframe id="locMap" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      src="{% if locations and locations[0].map_embed %}{{ locations[0].map_embed }}{% else %}https://www.google.com/maps?q=Deutschland&output=embed&z=6{% endif %}"
+      title="cove Standortkarte"></iframe>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const cards = document.querySelectorAll(".loc-card");
+  const mapFrame = document.getElementById("locMap");
+  const search = document.getElementById("locSearch");
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      cards.forEach((c) => c.classList.remove("is-active"));
+      card.classList.add("is-active");
+      const embed = card.dataset.embed;
+      const lat = card.dataset.lat, lng = card.dataset.lng;
+      if (embed) mapFrame.src = embed;
+      else if (lat && lng) mapFrame.src = `https://www.google.com/maps?q=${lat},${lng}&output=embed&z=15`;
+      else mapFrame.src = `https://www.google.com/maps?q=cove ${encodeURIComponent(card.dataset.city)}&output=embed&z=13`;
+    });
+  });
+
+  search.addEventListener("input", () => {
+    const q = search.value.toLowerCase();
+    cards.forEach((card) => {
+      card.style.display = card.dataset.city.toLowerCase().includes(q) ? "" : "none";
+    });
+  });
+</script>
+{% endblock %}

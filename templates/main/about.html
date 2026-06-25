@@ -1,0 +1,67 @@
+{# COVE Website Rebuild — templates/main/about.html — Über uns #}
+{% extends "base.html" %}
+{% block page_id %}about{% endblock %}
+{% block title %}COVE — Über uns | Die Maßschneider{% endblock %}
+{% block meta_description %}{{ about.meta_description }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <img src="{{ url_for('static', filename='images/cove_original/home-card-8.jpg') }}" alt="cove Atelier"
+       onerror="this.src='{{ url_for('static', filename='images/cove_original/slide-2-2.jpg') }}'">
+  <div class="page-hero__content">
+    <span class="section-eyebrow" data-i18n="about.eyebrow">ÜBER UNS</span>
+    <h1>{{ about.h1[0] if about.h1 else "Über uns" }}</h1>
+  </div>
+</section>
+
+{# Credential bar #}
+<section class="credentials">
+  <div class="credentials__track">
+    {% for badge in badges %}
+      <div class="credentials__item">
+        <img src="{{ url_for('static', filename='images/cove_original/' ~ badge.file) }}" alt="{{ badge.alt }}" loading="lazy" onerror="this.parentNode.style.display='none'">
+      </div>
+      {% if not loop.last %}<div class="credentials__sep"></div>{% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% set paras = (about.text_blocks or []) | selectattr('tag', 'equalto', 'p') | map(attribute='text') | list %}
+
+<section class="section">
+  <div class="about-teaser">
+    <div class="prose animate-on-scroll">
+      <span class="section-eyebrow">cove</span>
+      <h2>Maßkleidung mit Tradition und Leidenschaft</h2>
+      <div class="gold-rule gold-rule--left"></div>
+      {% for p in paras[:3] %}<p>{{ p }}</p>{% endfor %}
+      <a href="/termin" class="btn btn--gold mt-5" data-i18n="nav.book">Termin buchen</a>
+    </div>
+    <div class="about-teaser__media animate-on-scroll">
+      <img src="{{ url_for('static', filename='images/cove_original/slide-1-5.jpg') }}" alt="cove Handwerk" loading="lazy"
+           onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-2.jpg') }}'">
+    </div>
+  </div>
+</section>
+
+{# Values grid #}
+<section class="section appt-banner">
+  <div class="appt-banner__inner">
+    <div class="gold-rule"></div>
+    <div class="wiki-teaser__cards" style="grid-template-columns:repeat(3,1fr);max-width:1000px;margin:0 auto;">
+      <div class="wiki-card animate-on-scroll">
+        <div class="wiki-card__title">Tradition</div>
+        <p class="wiki-card__teaser" style="-webkit-line-clamp:4;">Ein jahrhundertealtes Handwerk, gepflegt seit 1999 — Maßschneiderei nach alter Schule.</p>
+      </div>
+      <div class="wiki-card animate-on-scroll">
+        <div class="wiki-card__title">Qualität</div>
+        <p class="wiki-card__teaser" style="-webkit-line-clamp:4;">Edelste Stoffe europäischer Webereien, sorgfältig verarbeitet — 100% Made in EU.</p>
+      </div>
+      <div class="wiki-card animate-on-scroll">
+        <div class="wiki-card__title">Individualität</div>
+        <p class="wiki-card__teaser" style="-webkit-line-clamp:4;">Jedes Stück entsteht ganz nach Ihren Maßen und Wünschen — individuell, wertvoll, zeitlos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
