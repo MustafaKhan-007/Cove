@@ -89,7 +89,13 @@
     "eyebrow": "EINBLICKE",
     "title": "Handwerk in Bildern",
     "view_all": "Alle Bilder",
-    "view_less": "Weniger anzeigen"
+    "view_less": "Weniger anzeigen",
+    "showcase_alt_1": "Ma?schneider bei der Anprobe eines Sakkos",
+    "showcase_alt_2": "Handwerk mit Ma?band und Schere",
+    "showcase_alt_3": "cove Atelier und Garderobe",
+    "showcase_alt_4": "Detailaufnahme aus dem cove Atelier",
+    "showcase_alt_5": "Schaufenster mit cove Ma?bekleidung",
+    "showcase_alt_6": "Handgefertigte Schuhe im Atelier"
   },
   "about": {
     "eyebrow": "ÜBER UNS",
@@ -101,7 +107,9 @@
     "values_quality_body": "Edelste Stoffe europäischer Webereien, sorgfältig verarbeitet — 100% Made in EU.",
     "values_individuality": "Individualität",
     "values_individuality_body": "Jedes Stück entsteht ganz nach Ihren Maßen und Wünschen — individuell, wertvoll, zeitlos.",
-    "fallback_body": "Seit 1999 gilt für uns die Devise „Individuell – wertvoll – zeitlos mit Zeitgeist“. Wir kümmern uns nach alter Tradition um maßgeschneiderte Garderobe."
+    "fallback_body": "Seit 1999 gilt für uns die Devise „Individuell – wertvoll – zeitlos mit Zeitgeist“. Wir kümmern uns nach alter Tradition um maßgeschneiderte Garderobe.",
+    "home_body_1": "Seit 1999 steht cove f?r Ma?kleidung, die Pers?nlichkeit, Anlass und Alltag zusammenf?hrt. In unseren Ateliers entstehen Kleidungsst?cke mit ruhiger Linie, pr?ziser Passform und langlebiger Substanz.",
+    "home_body_2": "Wir beraten zu Stoff, Schnitt und Details mit dem Blick eines Ma?schneiders: individuell, wertvoll und zeitlos mit Zeitgeist."
   },
   "appointment": {
     "title": "Ihr persönlicher Termin",

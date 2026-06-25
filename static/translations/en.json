@@ -89,7 +89,13 @@
     "eyebrow": "INSIGHTS",
     "title": "Craft in Pictures",
     "view_all": "View All",
-    "view_less": "Show Less"
+    "view_less": "Show Less",
+    "showcase_alt_1": "Tailor fitting a jacket in the atelier",
+    "showcase_alt_2": "Tailoring craft with measuring tape and shears",
+    "showcase_alt_3": "cove atelier and wardrobe",
+    "showcase_alt_4": "Detail from the cove atelier",
+    "showcase_alt_5": "Window display with cove bespoke clothing",
+    "showcase_alt_6": "Handcrafted shoes in the atelier"
   },
   "about": {
     "eyebrow": "ABOUT US",
@@ -101,7 +107,9 @@
     "values_quality_body": "Fine fabrics from European mills, carefully made — 100% Made in the EU.",
     "values_individuality": "Individuality",
     "values_individuality_body": "Every piece is made to your measurements and wishes — individual, valuable, timeless.",
-    "fallback_body": "Since 1999, our maxim has been individual, valuable and timeless with a contemporary spirit. We care for bespoke wardrobes in the traditional manner."
+    "fallback_body": "Since 1999, our maxim has been individual, valuable and timeless with a contemporary spirit. We care for bespoke wardrobes in the traditional manner.",
+    "home_body_1": "Since 1999, cove has stood for bespoke clothing that brings together personality, occasion and everyday wear. In our ateliers, garments are created with a calm line, precise fit and lasting substance.",
+    "home_body_2": "We advise on cloth, cut and details with the eye of a tailor: individual, valuable and timeless, with a contemporary spirit."
   },
   "appointment": {
     "title": "Your Personal Appointment",

@@ -51,37 +51,23 @@
   </div>
 </section>
 
-{# 5.4 EDITORIAL IMAGE STORIES #}
-<section class="section home-stories">
-  <div class="section__header animate-on-scroll">
-    <span class="section-eyebrow">{{ t('stories.eyebrow') }}</span>
-    <h2>{{ t('stories.title') }}</h2>
-  </div>
-  <div class="home-stories__grid">
-    <a href="/massanzug" class="story-card story-card--large animate-on-scroll">
-      <img src="{{ url_for('static', filename='images/cove_original/slide-1-4.jpg') }}" alt="Maßanzug Beratung" loading="lazy">
-      <div class="story-card__body">
-        <span class="section-eyebrow">{{ t('stories.bespoke_label') }}</span>
-        <h3>{{ t('stories.bespoke_title') }}</h3>
-        <p>{{ t('stories.bespoke_body') }}</p>
-      </div>
-    </a>
-    <a href="/masshemd" class="story-card animate-on-scroll">
-      <img src="{{ url_for('static', filename='images/cove_original/slide-2-6.jpg') }}" alt="Stoffauswahl" loading="lazy">
-      <div class="story-card__body">
-        <span class="section-eyebrow">{{ t('stories.cloth_label') }}</span>
-        <h3>{{ t('stories.cloth_title') }}</h3>
-        <p>{{ t('stories.cloth_body') }}</p>
-      </div>
-    </a>
-    <a href="/hochzeit" class="story-card animate-on-scroll">
-      <img src="{{ url_for('static', filename='images/cove_original/slide-2-10.jpg') }}" alt="Anprobe" loading="lazy">
-      <div class="story-card__body">
-        <span class="section-eyebrow">{{ t('stories.fitting_label') }}</span>
-        <h3>{{ t('stories.fitting_title') }}</h3>
-        <p>{{ t('stories.fitting_body') }}</p>
-      </div>
-    </a>
+{# 5.4 ORIGINAL COVE IMAGE SHOWCASE #}
+<section class="section home-gallery">
+  <div class="home-gallery__track" id="atelierGallery" aria-label="{{ t('gallery.title') }}">
+    {% set gallery_images = [
+      ('slide-1-8.jpg', 'gallery.showcase_alt_1'),
+      ('slide-1-4.jpg', 'gallery.showcase_alt_2'),
+      ('slide-1-5.jpg', 'gallery.showcase_alt_3'),
+      ('slide-2-1.jpg', 'gallery.showcase_alt_4'),
+      ('slide-2-6.jpg', 'gallery.showcase_alt_5'),
+      ('slide-2-10.jpg', 'gallery.showcase_alt_6')
+    ] %}
+    {% for file, alt_key in gallery_images %}
+      <figure class="home-gallery__frame{% if loop.first %} is-active{% endif %}">
+        <img src="{{ url_for('static', filename='images/cove_original/' ~ file) }}" alt="{{ t(alt_key) }}" loading="lazy">
+        <span class="home-gallery__marker"></span>
+      </figure>
+    {% endfor %}
   </div>
 </section>
 
@@ -97,11 +83,12 @@
       <h2 data-i18n="about.title">{{ t('about.title') }}</h2>
       <div class="gold-rule gold-rule--left"></div>
       {% set about_paras = (about.text_blocks or []) | selectattr('tag', 'equalto', 'p') | map(attribute='text') | list %}
-      {% if about_paras %}
+      {% if current_lang == 'de' and about_paras %}
         <p>{{ about_paras[0] }}</p>
         {% if about_paras|length > 1 %}<p>{{ about_paras[1][:280] }}{% if about_paras[1]|length > 280 %}…{% endif %}</p>{% endif %}
       {% else %}
-        <p>{{ t('about.fallback_body') }}</p>
+        <p data-i18n="about.home_body_1">{{ t('about.home_body_1') }}</p>
+        <p data-i18n="about.home_body_2">{{ t('about.home_body_2') }}</p>
       {% endif %}
       <a href="/ueber-uns" class="link-arrow" data-i18n="about.cta">{{ t('about.cta') }}</a> <span>&#8594;</span>
     </div>
@@ -118,9 +105,9 @@
         <strong>{{ reviews.summary.rating or "4.9" }}</strong> —
         <span data-i18n="reviews.summary" data-i18n-vars='{"count":"{{ reviews.summary.count or 837 }}"}'>{{ t('reviews.summary', count=reviews.summary.count or 837) }}</span>
       </div>
-    </div>
-    <div class="reviews__cta">
-      <a href="{{ google_reviews_link }}" target="_blank" rel="noopener" class="btn btn--outline" data-i18n="reviews.all">{{ t('reviews.all') }}</a>
+      <div class="reviews__cta">
+        <a href="{{ google_reviews_link }}" target="_blank" rel="noopener" class="btn btn--outline" data-i18n="reviews.all">{{ t('reviews.all') }}</a>
+      </div>
     </div>
   </div>
   <div class="reviews__grid">
@@ -137,4 +124,33 @@
   </div>
 </section>
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+  (() => {
+    const track = document.getElementById("atelierGallery");
+    if (!track) return;
+    const frames = Array.from(track.querySelectorAll(".home-gallery__frame"));
+
+    const activateClosest = () => {
+      const trackCenter = track.getBoundingClientRect().left + track.clientWidth / 2;
+      const closest = frames.reduce((best, frame) => {
+        const rect = frame.getBoundingClientRect();
+        const distance = Math.abs(rect.left + rect.width / 2 - trackCenter);
+        return distance < best.distance ? { frame, distance } : best;
+      }, { frame: frames[0], distance: Infinity }).frame;
+
+      frames.forEach((frame) => frame.classList.toggle("is-active", frame === closest));
+    };
+
+    track.addEventListener("scroll", () => window.requestAnimationFrame(activateClosest), { passive: true });
+    frames.forEach((frame) => {
+      frame.addEventListener("mouseenter", () => {
+        frames.forEach((item) => item.classList.toggle("is-active", item === frame));
+      });
+    });
+    activateClosest();
+  })();
+</script>
 {% endblock %}
