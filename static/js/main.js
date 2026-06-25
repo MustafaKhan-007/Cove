@@ -17,19 +17,12 @@
   document.querySelectorAll(".animate-on-scroll").forEach((el) => observer.observe(el));
 
   // 2. Nav scroll behaviour -----------------------------------------
-  let lastScroll = 0;
   const nav = document.getElementById("nav");
   if (nav) {
     window.addEventListener("scroll", () => {
       const current = window.scrollY;
       if (current > 80) nav.classList.add("nav--scrolled");
       else nav.classList.remove("nav--scrolled");
-      if (current > lastScroll && current > 200 && !nav.classList.contains("is-open")) {
-        nav.classList.add("nav--hidden");
-      } else {
-        nav.classList.remove("nav--hidden");
-      }
-      lastScroll = current;
     }, { passive: true });
   }
 

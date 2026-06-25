@@ -4,21 +4,21 @@
    DESIGN TOKENS
    =================================================================== */
 :root {
-  --color-bg:            #0E0E0E;
-  --color-bg-elevated:   #161616;
-  --color-bg-subtle:     #1E1E1E;
-  --color-surface:       #232323;
+  --color-bg:            #18140F;
+  --color-bg-elevated:   #241E17;
+  --color-bg-subtle:     #30281F;
+  --color-surface:       #382F25;
 
-  --color-gold:          #C9A96E;
-  --color-gold-light:    #DFC08A;
-  --color-gold-dim:      #8A6D3E;
+  --color-gold:          #B99663;
+  --color-gold-light:    #D1B17D;
+  --color-gold-dim:      #7D6646;
 
-  --color-text-primary:  #F0EDE8;
-  --color-text-secondary:#A09A90;
-  --color-text-muted:    #5C5751;
+  --color-text-primary:  #EFE6D8;
+  --color-text-secondary:#B7A896;
+  --color-text-muted:    #7A6A5A;
 
-  --color-border:        #2A2A2A;
-  --color-border-gold:   #C9A96E33;
+  --color-border:        #463B30;
+  --color-border-gold:   #B996634D;
 
   --color-white:         #FFFFFF;
   --color-error:         #C0392B;
@@ -370,3 +370,285 @@ button { font-family: var(--font-body); cursor: pointer; }
 
 .text-center { text-align: center; }
 .mt-5 { margin-top: var(--space-5); }
+
+/* ===================================================================
+   REFINED HOME DIRECTION — calmer Huntsman-inspired layout
+   =================================================================== */
+
+/* Static top bar with visible primary links */
+.nav {
+  background: rgba(24, 20, 15, .96);
+  border-bottom: 1px solid var(--color-border);
+}
+.nav--hidden { transform: none; }
+.nav__inner {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--space-5);
+}
+.nav__logo { justify-self: start; }
+.nav__logo img,
+.footer__logo img {
+  filter: sepia(.25) saturate(.75) brightness(1.35);
+}
+.nav__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2vw, 30px);
+  min-width: 0;
+}
+.nav-link {
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+.nav-link:hover { color: var(--color-gold-light); }
+.nav__actions { gap: var(--space-3); }
+.nav__hamburger { display: none; }
+
+/* Side panel is now a simple mobile-only menu, not a dramatic overlay. */
+.nav__overlay {
+  position: fixed;
+  inset: var(--nav-height) 0 auto auto;
+  width: min(360px, 100vw);
+  height: auto;
+  min-height: calc(100vh - var(--nav-height));
+  background: var(--color-bg-elevated);
+  border-left: 1px solid var(--color-border);
+  align-items: flex-start;
+  justify-content: stretch;
+  transform: translateX(100%);
+  opacity: 1;
+  visibility: visible;
+  transition: transform var(--transition-normal);
+}
+.nav.is-open .nav__overlay { transform: translateX(0); }
+.nav__overlay-inner {
+  display: block;
+  padding: var(--space-5);
+}
+.nav__overlay-col--primary .nav__overlay-link {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.nav__overlay-col--secondary { margin-top: var(--space-4); }
+.nav__overlay-link,
+.nav.is-open .nav__overlay-link,
+.nav.is-open .nav__overlay-col--secondary a {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
+/* Split hero: supplied image left, copy right */
+.hero {
+  min-height: 760px;
+  height: auto;
+  display: grid;
+  grid-template-columns: minmax(320px, 46vw) 1fr;
+  align-items: stretch;
+  justify-content: stretch;
+  padding-top: var(--nav-height);
+  background:
+    linear-gradient(90deg, rgba(24,20,15,.15), rgba(24,20,15,.96) 62%),
+    var(--color-bg);
+}
+.hero__media {
+  position: relative;
+  inset: auto;
+  min-height: calc(760px - var(--nav-height));
+  border-right: 1px solid var(--color-border);
+}
+.hero__media img {
+  object-position: center;
+  filter: saturate(.82) contrast(.94) brightness(.82);
+}
+.hero__media::after {
+  background: linear-gradient(to right, rgba(24,20,15,.05), rgba(24,20,15,.42));
+}
+.hero__content {
+  align-self: center;
+  justify-self: start;
+  text-align: left;
+  transform: none;
+  max-width: 720px;
+  padding: clamp(40px, 8vw, 110px);
+}
+.hero__title {
+  font-size: clamp(3.1rem, 6vw, 6rem);
+  max-width: 760px;
+}
+.hero__subtitle {
+  margin: 0 0 var(--space-5);
+  color: var(--color-text-secondary);
+}
+.hero__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* Certifications: warmer panel and visible marks */
+.credentials {
+  background: #E0D0BA;
+  border-color: rgba(125, 102, 70, .45);
+  padding: var(--space-5) var(--container-padding);
+}
+.credentials__track {
+  background: rgba(255, 248, 236, .55);
+  border: 1px solid rgba(125, 102, 70, .25);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+}
+.credentials__item img {
+  height: 62px;
+  filter: grayscale(.2) contrast(1.15) brightness(.82);
+  opacity: .95;
+}
+.credentials__item:hover img {
+  filter: grayscale(0) contrast(1.05) brightness(1);
+}
+.credentials__sep { background: rgba(125, 102, 70, .35); }
+
+/* Fewer, larger service cards with explanatory copy */
+.services__grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  grid-auto-rows: 480px;
+}
+.service-card,
+.service-card--wide,
+.service-card--half {
+  grid-column: span 1;
+}
+.service-card {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+}
+.service-card::after {
+  background: linear-gradient(to top, rgba(24,20,15,.92) 0%, rgba(24,20,15,.18) 64%);
+}
+.service-card:hover img {
+  transform: none;
+}
+.service-card__body {
+  left: var(--space-5);
+  right: var(--space-5);
+  bottom: var(--space-5);
+}
+.service-card__title {
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  margin-top: var(--space-2);
+}
+.service-card__desc {
+  display: block;
+  max-width: 460px;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-3);
+}
+.service-card__arrow {
+  opacity: 1;
+  transform: none;
+}
+
+/* Editorial stories replace the dense gallery */
+.home-stories {
+  background: var(--color-bg-elevated);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+.home-stories__grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: var(--space-5);
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+.story-card {
+  display: grid;
+  grid-template-rows: minmax(360px, 48vh) auto;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+.story-card--large {
+  grid-row: span 2;
+  grid-template-rows: minmax(640px, 70vh) auto;
+}
+.story-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.82) contrast(.95) brightness(.86);
+}
+.story-card__body {
+  padding: var(--space-5);
+}
+.story-card__body h3 {
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  margin-bottom: var(--space-3);
+}
+.story-card__body p {
+  color: var(--color-text-secondary);
+  max-width: 56ch;
+}
+
+/* Reduce movement site-wide for the calmer direction */
+.animate-on-scroll {
+  transform: translateY(12px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+@media (max-width: 1180px) {
+  .nav__links {
+    gap: var(--space-3);
+  }
+  .nav-link {
+    font-size: .68rem;
+    letter-spacing: var(--tracking-wider);
+  }
+}
+
+@media (max-width: 980px) {
+  .nav__links { display: none; }
+  .nav__hamburger { display: flex; }
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .hero__media {
+    min-height: 58vh;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .hero__content {
+    padding: var(--space-6) var(--container-padding);
+  }
+  .home-stories__grid,
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+  .story-card,
+  .story-card--large {
+    grid-template-rows: minmax(360px, 55vh) auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav__actions .btn { display: none; }
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .credentials {
+    padding: var(--space-4) 0;
+  }
+  .credentials__track {
+    background: transparent;
+    border: none;
+  }
+}

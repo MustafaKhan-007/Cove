@@ -1,19 +1,27 @@
 {# COVE Website Rebuild — templates/partials/nav.html — fixed navigation #}
 <nav class="nav" id="nav">
   <div class="nav__inner">
-    <div class="nav__lang">
-      <button class="lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
-      <span class="nav__lang-sep">|</span>
-      <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
-    </div>
-
     <a href="/" class="nav__logo" aria-label="COVE Startseite">
       <img src="{{ url_for('static', filename='images/cove_original/logo.svg') }}" alt="COVE" height="34">
     </a>
 
+    <div class="nav__links" aria-label="Hauptnavigation">
+      <a href="/massanzug" class="nav-link" data-i18n="nav.massanzug">MAßANZUG</a>
+      <a href="/masshemd" class="nav-link" data-i18n="nav.masshemd">MAßHEMD</a>
+      <a href="/hochzeit" class="nav-link" data-i18n="nav.hochzeit">HOCHZEIT</a>
+      <a href="/standorte" class="nav-link" data-i18n="nav.locations">Standorte</a>
+      <a href="/ueber-uns" class="nav-link" data-i18n="nav.about">Über uns</a>
+      <a href="/wiki" class="nav-link" data-i18n="nav.wiki">Wiki</a>
+      <a href="/shop" class="nav-link" data-i18n="nav.shop">Shop</a>
+    </div>
+
     <div class="nav__actions">
       <a href="/termin" class="btn btn--gold btn--sm" data-i18n="nav.book">Termin buchen</a>
-      <a href="/shop" class="nav__shop-link" data-i18n="nav.shop">Shop</a>
+      <div class="nav__lang">
+        <button class="lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
+        <span class="nav__lang-sep">|</span>
+        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+      </div>
       <button class="nav__hamburger" aria-label="Menü öffnen" id="menuToggle">
         <span></span><span></span><span></span>
       </button>

@@ -9,19 +9,17 @@
 {# 5.1 HERO #}
 <section class="hero">
   <div class="hero__media">
-    <img src="{{ url_for('static', filename='images/cove_original/slide-1-1.jpg') }}" alt="cove Maßschneiderei"
-         onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-1.jpg') }}'">
+    <img src="{{ url_for('static', filename='images/ui/hero-mannequin.png') }}" alt="Maßanzug auf Schneiderpuppe">
   </div>
   <div class="hero__content">
     <span class="hero__eyebrow" data-i18n="hero.eyebrow">MAßSCHNEIDER SEIT GENERATIONEN</span>
     <h1 class="hero__title" data-i18n="hero.title">MAßBEKLEIDUNG<br>VOM MAßSCHNEIDER</h1>
     <p class="hero__subtitle" data-i18n="hero.subtitle">Maßanzüge, Maßhemden und klassische Garderobe — gefertigt mit Tradition und Leidenschaft.</p>
-    <a href="/termin" class="btn btn--gold btn--lg" data-i18n="hero.cta">Beratungstermin vereinbaren</a>
+    <div class="hero__actions">
+      <a href="/termin" class="btn btn--gold btn--lg" data-i18n="hero.cta">Beratungstermin vereinbaren</a>
+      <a href="/standorte" class="btn btn--outline btn--lg" data-i18n="appointment.cta_locations">Standorte entdecken</a>
+    </div>
   </div>
-  <a href="#services" class="hero__scroll" aria-label="Scroll">
-    <div class="hero__scroll-rule"></div>
-    <div class="hero__scroll-arrow">&#8595;</div>
-  </a>
 </section>
 
 {# 5.2 CREDENTIALS BAR #}
@@ -43,13 +41,20 @@
     <h2 data-i18n="services.title">Gefertigt für Sie.<br>Jedes Detail nach Maß.</h2>
   </div>
   <div class="services__grid animate-on-scroll">
-    {% for s in services %}
+    {% set service_copy = {
+      'massanzug': 'Ein persönlicher Anzug mit ruhiger Linie, präzisem Sitz und Stoffen, die über Jahre Bestand haben.',
+      'masshemd': 'Maßhemden für Alltag und Anlass — Kragen, Manschette, Stoff und Passform nach Ihren Vorgaben.',
+      'hochzeit': 'Klassische Hochzeitsgarderobe mit Maß, Zurückhaltung und Details, die zum Tag passen.',
+      'schuhe': 'Ausgewählte Schuhmodelle und Pflegeprodukte als Fundament einer vollständigen Garderobe.'
+    } %}
+    {% for s in services if s.key in ['massanzug', 'masshemd', 'hochzeit', 'schuhe'] %}
       <a href="{{ s.route }}" class="service-card service-card--{{ s.span }}">
         <img src="{{ url_for('static', filename='images/cove_original/' ~ s.card) }}" alt="{{ s.label_de }}" loading="lazy"
              onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-1.jpg') }}'">
         <div class="service-card__body">
           <span class="service-card__label" data-i18n="nav.{{ s.key if s.key in ['massanzug','masshemd','hochzeit','sakko','mantel','schuhe'] else 'shop' }}">{{ s.label_de }}</span>
           <div class="service-card__title">{{ s.label_de }}</div>
+          <p class="service-card__desc">{{ service_copy[s.key] }}</p>
           <span class="service-card__arrow">&#8594;</span>
         </div>
       </a>
@@ -57,28 +62,39 @@
   </div>
 </section>
 
-{# 5.4 GALLERY #}
-<section class="gallery">
-  <div class="gallery__grid">
-    {% for img in slides %}
-      <figure class="gallery__item{% if loop.index > 15 %} gallery__item--hidden{% endif %}">
-        <img src="{{ url_for('static', filename='images/cove_original/' ~ img) }}" alt="cove Galerie" loading="lazy"
-             onerror="this.parentNode.style.display='none'">
-      </figure>
-    {% endfor %}
+{# 5.4 EDITORIAL IMAGE STORIES #}
+<section class="section home-stories">
+  <div class="section__header animate-on-scroll">
+    <span class="section-eyebrow">AUS DEM ATELIER</span>
+    <h2>Einblicke mit Bedeutung.</h2>
   </div>
-  <div class="gallery__more">
-    <button class="btn btn--ghost" id="galleryMore" data-i18n="gallery.view_all" data-expanded="false">Alle Bilder</button>
+  <div class="home-stories__grid">
+    <a href="/massanzug" class="story-card story-card--large animate-on-scroll">
+      <img src="{{ url_for('static', filename='images/cove_original/slide-1-4.jpg') }}" alt="Maßanzug Beratung" loading="lazy">
+      <div class="story-card__body">
+        <span class="section-eyebrow">BESPOKE</span>
+        <h3>Der Schnitt beginnt im Gespräch.</h3>
+        <p>Maße, Haltung, Anlass und persönlicher Stil bestimmen die Linie — nicht ein fertiges Raster.</p>
+      </div>
+    </a>
+    <a href="/masshemd" class="story-card animate-on-scroll">
+      <img src="{{ url_for('static', filename='images/cove_original/slide-2-6.jpg') }}" alt="Stoffauswahl" loading="lazy">
+      <div class="story-card__body">
+        <span class="section-eyebrow">STOFFE</span>
+        <h3>Material mit Charakter.</h3>
+        <p>Von Popeline bis Flanell: die Auswahl entscheidet über Fall, Griff und Alltagstauglichkeit.</p>
+      </div>
+    </a>
+    <a href="/hochzeit" class="story-card animate-on-scroll">
+      <img src="{{ url_for('static', filename='images/cove_original/slide-2-10.jpg') }}" alt="Anprobe" loading="lazy">
+      <div class="story-card__body">
+        <span class="section-eyebrow">ANPROBE</span>
+        <h3>Ruhige Details für große Tage.</h3>
+        <p>Hochzeitsgarderobe soll präsent sein, ohne den Träger zu übertönen.</p>
+      </div>
+    </a>
   </div>
 </section>
-
-{# Lightbox #}
-<div class="lightbox" id="lightbox">
-  <button class="lightbox__close" aria-label="Schließen">&times;</button>
-  <button class="lightbox__nav lightbox__nav--prev" aria-label="Zurück">&#8249;</button>
-  <img class="lightbox__img" src="" alt="">
-  <button class="lightbox__nav lightbox__nav--next" aria-label="Weiter">&#8250;</button>
-</div>
 
 {# 5.5 ABOUT TEASER #}
 <section class="section">
@@ -183,8 +199,4 @@
   </div>
 </section>
 
-{% endblock %}
-
-{% block scripts %}
-<script src="{{ url_for('static', filename='js/gallery.js') }}"></script>
 {% endblock %}
