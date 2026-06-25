@@ -174,8 +174,8 @@
     });
     if (stepLabel) {
       const t = window.coveI18n;
-      const lbl = t ? t.t(`booking.step`) : "Schritt";
-      const of = t ? t.t(`booking.of`) : "von";
+      const lbl = (t && t.t("booking.step")) || root.dataset.stepLabel || "Schritt";
+      const of = (t && t.t("booking.of")) || root.dataset.ofLabel || "von";
       stepLabel.textContent = `${lbl} ${step} ${of} ${TOTAL_STEPS}`;
     }
     if (backBtn) backBtn.style.visibility = step === 1 ? "hidden" : "visible";
@@ -224,11 +224,11 @@
         const msgEl = successEl.querySelector(".booking__success-msg");
         if (msgEl) msgEl.textContent = data.message;
       } else {
-        alert(data.message || "Fehler. Bitte versuchen Sie es erneut.");
+        alert(data.message || root.dataset.errorGeneric || "Please try again.");
         confirmBtn.disabled = false;
       }
     } catch (err) {
-      alert("Netzwerkfehler. Bitte versuchen Sie es erneut.");
+      alert(root.dataset.errorNetwork || "Network error. Please try again.");
       confirmBtn.disabled = false;
     }
   });

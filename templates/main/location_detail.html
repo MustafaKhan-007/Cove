@@ -8,7 +8,7 @@
   <img src="{{ url_for('static', filename='images/cove_original/slide-2-3.jpg') }}" alt="cove {{ loc.city }}"
        onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-3.jpg') }}'">
   <div class="page-hero__content">
-    <span class="section-eyebrow" data-i18n="nav.locations">Standorte</span>
+    <span class="section-eyebrow" data-i18n="nav.locations">{{ t('nav.locations') }}</span>
     <h1>cove {{ loc.city }}</h1>
   </div>
 </section>
@@ -19,35 +19,35 @@
       <h2 style="margin-bottom:24px;">{{ loc.city }}</h2>
       {% if loc.address %}
         <div class="info-card__row">
-          <span class="info-card__label" data-i18n="locations.address">Adresse</span>
+          <span class="info-card__label" data-i18n="locations.address">{{ t('locations.address') }}</span>
           <span>{{ loc.address }}</span>
         </div>
       {% endif %}
       <div class="info-card__row">
-        <span class="info-card__label" data-i18n="locations.phone">Telefon</span>
+        <span class="info-card__label" data-i18n="locations.phone">{{ t('locations.phone') }}</span>
         <span><a href="tel:{{ loc.phone | replace(' ', '') }}">{{ loc.phone }}</a></span>
       </div>
       {% if loc.hours %}
         <div class="info-card__row">
-          <span class="info-card__label" data-i18n="locations.hours">Öffnungszeiten</span>
+          <span class="info-card__label" data-i18n="locations.hours">{{ t('locations.hours') }}</span>
           <span>{% for h in loc.hours %}{{ h }}<br>{% endfor %}</span>
         </div>
       {% endif %}
       <a href="/termin" class="btn btn--gold mt-5" style="margin-top:24px;"
-         data-i18n="locations.book_here" data-i18n-vars='{"city":"{{ loc.city }}"}'>Termin in {{ loc.city }} buchen</a>
+         data-i18n="locations.book_here" data-i18n-vars='{"city":"{{ loc.city }}"}'>{{ t('locations.book_here', city=loc.city) }}</a>
       <div style="margin-top:16px;">
-        <a href="/standorte" class="link-arrow" style="font-size:0.7rem;" data-i18n="locations.back">Alle Standorte</a>
+        <a href="/standorte" class="link-arrow" style="font-size:0.7rem;" data-i18n="locations.back">{{ t('locations.back') }}</a>
       </div>
     </div>
     <div class="loc-map animate-on-scroll" style="position:relative;top:0;height:480px;">
       <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
         src="{% if loc.map_embed %}{{ loc.map_embed }}{% elif loc.coords %}https://www.google.com/maps?q={{ loc.coords.lat }},{{ loc.coords.lng }}&output=embed&z=15{% else %}https://www.google.com/maps?q=cove {{ loc.city }}&output=embed&z=13{% endif %}"
-        title="Karte {{ loc.city }}" style="width:100%;height:100%;border:0;"></iframe>
+        title="{{ t('locations.title') }} {{ loc.city }}" style="width:100%;height:100%;border:0;"></iframe>
     </div>
   </div>
 
   {% set paras = (loc.text_blocks or []) | selectattr('tag', 'equalto', 'p') | map(attribute='text') | list %}
-  {% if paras %}
+  {% if paras and current_lang == 'de' %}
     <div class="prose" style="max-width:760px;margin:64px auto 0;">
       {% for p in paras[:3] %}<p>{{ p }}</p>{% endfor %}
     </div>

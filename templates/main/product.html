@@ -8,12 +8,20 @@
 {% set hero_img = images[0] if images else url_for('static', filename='images/cove_original/home-card-1.jpg') %}
 
 {% block content %}
+{% set service_i18n_keys = {
+  'cove-custom-shirt': 'hemdkonfigurator',
+  'herrenschuh-selber-designen': 'schuhkonfigurator'
+} %}
+{% set service_i18n_key = service_i18n_keys.get(route, meta.key) %}
+{% set service_title = t('services.items.' ~ service_i18n_key ~ '.title', default=meta.title_en if current_lang == 'en' else meta.title_de) %}
+{% set service_desc = t('services.items.' ~ service_i18n_key ~ '.desc', default=product.meta_description) %}
+
 <section class="page-hero">
-  <img src="{{ hero_img if images else hero_img }}" alt="{{ meta.title_de }}"
+  <img src="{{ hero_img if images else hero_img }}" alt="{{ service_title }}"
        onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-2.jpg') }}'">
   <div class="page-hero__content">
-    <span class="section-eyebrow">cove</span>
-    <h1>{{ (product.h1[0] if product.h1 else meta.title_de) }}</h1>
+    <span class="section-eyebrow" data-i18n="common.brand_eyebrow">{{ t('common.brand_eyebrow') }}</span>
+    <h1>{{ (product.h1[0] if product.h1 and current_lang == 'de' else service_title) }}</h1>
   </div>
 </section>
 
@@ -21,25 +29,25 @@
   {% set paras = (product.text_blocks or []) | selectattr('tag', 'equalto', 'p') | map(attribute='text') | list %}
   {% set heads = (product.text_blocks or []) | selectattr('tag', 'equalto', 'h2') | map(attribute='text') | list %}
   <div class="prose" style="max-width:820px;margin:0 auto;">
-    {% if heads %}<h2>{{ heads[0] }}</h2><div class="gold-rule gold-rule--left"></div>{% endif %}
-    {% if paras %}
+    {% if heads and current_lang == 'de' %}<h2>{{ heads[0] }}</h2><div class="gold-rule gold-rule--left"></div>{% endif %}
+    {% if paras and current_lang == 'de' %}
       {% for p in paras[:6] %}<p>{{ p }}</p>{% endfor %}
     {% else %}
-      <p>TODO: populate from scraped_content/products.json — Inhalt für {{ meta.title_de }}.</p>
+      <p>{{ service_desc }}</p>
     {% endif %}
-    <a href="/termin" class="btn btn--gold mt-5">Termin buchen</a>
+    <a href="/termin" class="btn btn--gold mt-5" data-i18n="nav.book">{{ t('nav.book') }}</a>
   </div>
 
   {% if images|length > 1 %}
     <div class="gallery__grid" style="columns:3;margin-top:64px;max-width:1100px;margin-left:auto;margin-right:auto;">
       {% for img in images[1:13] %}
         <figure class="gallery__item">
-          <img src="{{ img }}" alt="{{ meta.title_de }}" loading="lazy" onerror="this.parentNode.style.display='none'">
+          <img src="{{ img }}" alt="{{ service_title }}" loading="lazy" onerror="this.parentNode.style.display='none'">
         </figure>
       {% endfor %}
     </div>
     <div class="lightbox" id="lightbox">
-      <button class="lightbox__close" aria-label="Schließen">&times;</button>
+      <button class="lightbox__close" aria-label="{{ t('common.close') }}">&times;</button>
       <button class="lightbox__nav lightbox__nav--prev">&#8249;</button>
       <img class="lightbox__img" src="" alt="">
       <button class="lightbox__nav lightbox__nav--next">&#8250;</button>

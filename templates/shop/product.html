@@ -17,8 +17,8 @@
       {% if product.price %}<div class="product-card__price" style="font-size:1.25rem;margin:16px 0;">{{ product.price }}</div>{% endif %}
       {% if product.variants %}<p style="color:var(--color-text-secondary);">{{ product.variants }}</p>{% endif %}
       <div class="gold-rule gold-rule--left"></div>
-      <a href="{{ product.url }}" target="_blank" rel="noopener" class="btn btn--gold" data-i18n="shop.view_original">Im Original-Shop ansehen</a>
-      <div style="margin-top:16px;"><a href="/shop" class="link-arrow" style="font-size:0.7rem;" data-i18n="shop.all">Alle Produkte</a></div>
+      <a href="{{ product.url }}" target="_blank" rel="noopener" class="btn btn--gold" data-i18n="shop.view_original">{{ t('shop.view_original') }}</a>
+      <div style="margin-top:16px;"><a href="/shop" class="link-arrow" style="font-size:0.7rem;" data-i18n="shop.all">{{ t('shop.all') }}</a></div>
     </div>
   </div>
 </section>

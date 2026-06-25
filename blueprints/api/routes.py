@@ -7,6 +7,7 @@ from flask import request, jsonify, current_app
 
 import content
 from extensions import db, mail, HAS_MAIL
+from i18n import translate
 from models import Appointment
 from . import api
 
@@ -25,21 +26,21 @@ def create_booking():
         return jsonify({"success": False,
                         "error": "missing_fields",
                         "fields": missing,
-                        "message": "Bitte füllen Sie alle Pflichtfelder aus."}), 400
+                        "message": translate("booking_api.missing_fields")}), 400
 
     if not EMAIL_RE.match(data["email"].strip()):
         return jsonify({"success": False, "error": "invalid_email",
-                        "message": "Bitte geben Sie eine gültige E-Mail-Adresse an."}), 400
+                        "message": translate("booking_api.invalid_email")}), 400
 
     if not data.get("privacy"):
         return jsonify({"success": False, "error": "privacy_required",
-                        "message": "Bitte stimmen Sie der Datenschutzerklärung zu."}), 400
+                        "message": translate("booking_api.privacy_required")}), 400
 
     try:
         pref_date = datetime.strptime(data["preferred_date"], "%Y-%m-%d").date()
     except (ValueError, TypeError):
         return jsonify({"success": False, "error": "invalid_date",
-                        "message": "Ungültiges Datum."}), 400
+                        "message": translate("booking_api.invalid_date")}), 400
 
     # --- persist ----------------------------------------------------------
     loc = content.location(data["location_id"])
@@ -66,13 +67,7 @@ def create_booking():
 
     _send_confirmation(appt)
 
-    msg = ("Vielen Dank! Ihre Terminanfrage ist eingegangen. "
-           "Wir bestätigen Ihren Termin in Kürze per E-Mail."
-           if appt.language == "de" else
-           "Thank you! Your appointment request has been received. "
-           "We will confirm your appointment by email shortly.")
-
-    return jsonify({"success": True, "token": token, "message": msg})
+    return jsonify({"success": True, "token": token, "message": translate("booking_api.success_long")})
 
 
 def _clean(value, maxlen):
@@ -81,15 +76,14 @@ def _clean(value, maxlen):
 
 def _send_confirmation(appt):
     """Send a confirmation email if Flask-Mail is configured; otherwise log."""
-    subject = "Ihre Terminanfrage bei cove"
-    body = (
-        f"Hallo {appt.first_name} {appt.last_name},\n\n"
-        f"vielen Dank für Ihre Terminanfrage bei cove.\n\n"
-        f"Service: {appt.service}\n"
-        f"Standort: {appt.location_name}\n"
-        f"Datum: {appt.preferred_date} um {appt.preferred_time} Uhr\n\n"
-        f"Wir melden uns in Kürze zur Bestätigung.\n\n"
-        f"Ihr cove Team"
+    subject = translate("booking_api.mail_subject")
+    body = translate(
+        "booking_api.mail_body",
+        name=f"{appt.first_name} {appt.last_name}".strip(),
+        service=appt.service,
+        location=appt.location_name,
+        date=appt.preferred_date,
+        time=appt.preferred_time,
     )
     if HAS_MAIL and current_app.config.get("MAIL_SERVER"):
         try:

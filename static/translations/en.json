@@ -14,7 +14,11 @@
     "wiki": "Wiki",
     "faq": "F.A.Q.",
     "menu_open": "Open menu",
-    "menu_close": "Close menu"
+    "menu_close": "Close menu",
+    "home_aria": "COVE homepage",
+    "main_aria": "Main navigation",
+    "language_de": "German",
+    "language_en": "English"
   },
   "hero": {
     "eyebrow": "BESPOKE TAILORS FOR GENERATIONS",
@@ -29,7 +33,57 @@
   "services": {
     "eyebrow": "OUR EXPERTISE",
     "title": "Made for You.<br>Every detail bespoke.",
-    "discover": "Discover"
+    "discover": "Discover",
+    "items": {
+      "massanzug": {
+        "title": "BESPOKE SUIT",
+        "desc": "Quiet line. Precise fit."
+      },
+      "masshemd": {
+        "title": "BESPOKE SHIRT",
+        "desc": "Collar, cuff and fit made to measure."
+      },
+      "blog": {
+        "title": "COVE BLOG",
+        "desc": "Style notes from bespoke tailoring."
+      },
+      "standorte": {
+        "title": "LOCATIONS",
+        "desc": "19 ateliers across Germany."
+      },
+      "hochzeit": {
+        "title": "WEDDING",
+        "desc": "Tailoring for important days."
+      },
+      "hemdkonfigurator": {
+        "title": "SHIRT CONFIGURATOR",
+        "desc": "Design your bespoke shirt online."
+      },
+      "schuhkonfigurator": {
+        "title": "SHOE CONFIGURATOR",
+        "desc": "Individualise your shoes."
+      },
+      "sakko": {
+        "title": "BESPOKE JACKET",
+        "desc": "Presence for business and leisure."
+      },
+      "mantel": {
+        "title": "BESPOKE COAT",
+        "desc": "Outerwear with a clean silhouette."
+      },
+      "masshose": {
+        "title": "BESPOKE TROUSERS",
+        "desc": "Clean drape and comfort."
+      },
+      "schuhe": {
+        "title": "SHOES",
+        "desc": "The foundation of the wardrobe."
+      },
+      "onlineshop": {
+        "title": "ONLINE SHOP",
+        "desc": "Accessories, care and gifts."
+      }
+    }
   },
   "gallery": {
     "eyebrow": "INSIGHTS",
@@ -40,7 +94,14 @@
   "about": {
     "eyebrow": "ABOUT US",
     "title": "Bespoke clothing with tradition and passion",
-    "cta": "Learn More"
+    "cta": "Learn More",
+    "values_tradition": "Tradition",
+    "values_tradition_body": "A centuries-old craft, cultivated since 1999 — tailoring in the classic manner.",
+    "values_quality": "Quality",
+    "values_quality_body": "Fine fabrics from European mills, carefully made — 100% Made in the EU.",
+    "values_individuality": "Individuality",
+    "values_individuality_body": "Every piece is made to your measurements and wishes — individual, valuable, timeless.",
+    "fallback_body": "Since 1999, our maxim has been individual, valuable and timeless with a contemporary spirit. We care for bespoke wardrobes in the traditional manner."
   },
   "appointment": {
     "title": "Your Personal Appointment",
@@ -52,7 +113,34 @@
     "title": "What Our Clients Say",
     "summary": "Based on {count} reviews",
     "read_more": "read more",
-    "all": "All reviews on Google"
+    "all": "All reviews on Google",
+    "items": [
+      {
+        "time": "2 weeks ago",
+        "text": "Excellent advice and first-class workmanship. My bespoke suit fits perfectly — highly recommended."
+      },
+      {
+        "time": "1 month ago",
+        "text": "From the first appointment to the fitting, the whole process was professional and pleasant. The quality is exceptional."
+      },
+      {
+        "time": "3 weeks ago",
+        "text": "Knowledgeable team, refined fabrics and a perfect fit. Tailoring is still lived as a craft here."
+      },
+      {
+        "time": "2 months ago",
+        "text": "I had my wedding suit made here. The result exceeded every expectation."
+      },
+      {
+        "time": "1 week ago",
+        "text": "Individual advice at the highest level. You feel well looked after from the first minute."
+      },
+      {
+        "time": "1 month ago",
+        "text": "Tradition meets modernity. The bespoke suit is a masterpiece and the service was outstanding."
+      }
+    ],
+    "google_user": "Google User"
   },
   "locations": {
     "title": "19 Locations Across Germany",
@@ -63,7 +151,12 @@
     "back": "All locations",
     "address": "Address",
     "phone": "Phone",
-    "hours": "Opening Hours"
+    "hours": "Opening Hours",
+    "selected": "Selected Location",
+    "directions": "Get Directions",
+    "by_appointment": "By appointment",
+    "address_pending": "Address coming soon",
+    "map_title": "cove location map"
   },
   "wiki": {
     "eyebrow": "COVE WIKI",
@@ -74,7 +167,39 @@
     "related": "Related Articles",
     "read_time": "min read",
     "index_title": "The cove Wiki",
-    "index_subtitle": "The lexicon of bespoke tailoring — from A to Z."
+    "index_subtitle": "The lexicon of bespoke tailoring — from A to Z.",
+    "articles": {
+      "bespoke": {
+        "title": "Bespoke",
+        "meta": "Bespoke is the highest level of custom tailoring.",
+        "body": "Bespoke is the highest class of tailoring: a garment designed and made from the ground up to the client’s individual measurements and wishes."
+      },
+      "full-canvas": {
+        "title": "Full Canvas",
+        "meta": "Full canvas is the highest-quality jacket construction.",
+        "body": "In full-canvas construction, a continuous horsehair canvas is worked between the outer cloth and lining, giving the jacket shape, movement and longevity."
+      },
+      "hochzeitsanzug": {
+        "title": "Wedding Suit",
+        "meta": "The made-to-measure wedding suit.",
+        "body": "A made-to-measure wedding suit is tailored to the groom and the occasion, from cloth and cut to the personal details."
+      },
+      "kaschmir-cashmere": {
+        "title": "Cashmere",
+        "meta": "Cashmere is one of the finest natural fibres.",
+        "body": "Cashmere is among the finest natural fibres. The soft wool of the cashmere goat is especially light, warm and smooth to the touch."
+      },
+      "harris-tweed": {
+        "title": "Harris Tweed",
+        "meta": "Harris Tweed is handwoven in the Outer Hebrides.",
+        "body": "Harris Tweed is a handwoven wool cloth from Scotland’s Outer Hebrides and is protected by its own act of parliament. It stands for durability and timeless style."
+      },
+      "flanell": {
+        "title": "Flannel",
+        "meta": "Flannel is a soft, brushed wool cloth.",
+        "body": "Flannel is a soft, lightly brushed wool cloth with a warm hand, a classic choice for autumn and winter wardrobes."
+      }
+    }
   },
   "footer": {
     "tagline": "Bespoke clothing by master tailors — since 1999.",
@@ -118,11 +243,37 @@
     "edit": "Edit",
     "success": "Thank you! Your appointment request has been received.",
     "service_beratung": "CONSULTATION",
-    "service_sonstiges": "OTHER"
+    "service_sonstiges": "OTHER",
+    "thanks": "Thank you!",
+    "home": "Back to Homepage",
+    "error_generic": "Something went wrong. Please try again.",
+    "error_network": "Network error. Please try again."
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Answers about bespoke clothing and your appointment at cove."
+    "subtitle": "Answers about bespoke clothing and your appointment at cove.",
+    "items": [
+      {
+        "q": "What happens during a cove fitting appointment?",
+        "a": "In a personal consultation we take measurements, discuss fabrics, cut and details, and advise you on your individual wardrobe."
+      },
+      {
+        "q": "How long does it take to make a bespoke suit?",
+        "a": "A bespoke suit usually takes several weeks, depending on model, fabric and atelier capacity. We will give you a clear timeframe during your appointment."
+      },
+      {
+        "q": "Which fabrics does cove offer?",
+        "a": "We work with leading European mills and offer a wide selection of wool, cashmere, tweed, flannel and other fine materials."
+      },
+      {
+        "q": "Where does cove have locations?",
+        "a": "cove is represented at 19 locations across Germany, including Berlin, Hamburg, Munich, Düsseldorf, Cologne and Frankfurt."
+      },
+      {
+        "q": "Can I book an appointment online?",
+        "a": "Yes, you can conveniently book a consultation at your preferred atelier online."
+      }
+    ]
   },
   "shop": {
     "title": "Shop",
@@ -130,10 +281,59 @@
     "add_to_cart": "Add to Cart",
     "view_original": "View in original shop",
     "categories": "Categories",
-    "all": "All Products"
+    "all": "All Products",
+    "all_brands": "All Brands",
+    "search_placeholder": "Search product...",
+    "empty_category": "No products in this category.",
+    "category_labels": {
+      "alle-produkte": "All Products",
+      "neuheiten": "New Arrivals",
+      "herren": "Men",
+      "damen": "Women",
+      "accessoires": "Accessories",
+      "schuhe": "Shoes",
+      "hemden": "Shirts",
+      "anzuege": "Suits",
+      "sakkos": "Jackets",
+      "hosen": "Trousers",
+      "maentel": "Coats",
+      "pflege": "Care",
+      "geschenke": "Gifts",
+      "gutscheine": "Gift Cards",
+      "sale": "Sale"
+    }
   },
   "common": {
     "discover_more": "Discover More",
-    "loading": "Loading…"
+    "loading": "Loading…",
+    "route_home": "Back to Homepage",
+    "not_found_title": "This page does not exist.",
+    "not_found_body": "You may find what you are looking for on our homepage.",
+    "brand_eyebrow": "cove",
+    "close": "Close",
+    "previous": "Previous",
+    "next_item": "Next"
+  },
+  "stories": {
+    "eyebrow": "FROM THE ATELIER",
+    "title": "Insights With Purpose.",
+    "bespoke_label": "BESPOKE",
+    "bespoke_title": "The cut begins in conversation.",
+    "bespoke_body": "Measurements, posture, occasion and personal style define the line — not a fixed template.",
+    "cloth_label": "CLOTH",
+    "cloth_title": "Material with character.",
+    "cloth_body": "From poplin to flannel, cloth determines drape, hand and everyday suitability.",
+    "fitting_label": "FITTING",
+    "fitting_title": "Quiet details for important days.",
+    "fitting_body": "Wedding tailoring should be present without overpowering the wearer."
+  },
+  "booking_api": {
+    "missing_fields": "Please complete all required fields.",
+    "invalid_email": "Please enter a valid email address.",
+    "privacy_required": "Please accept the privacy policy.",
+    "invalid_date": "Invalid date.",
+    "success_long": "Thank you! Your appointment request has been received. We will confirm your appointment by email shortly.",
+    "mail_subject": "Your appointment request at cove",
+    "mail_body": "Hello {name},\n\nThank you for your appointment request at cove.\n\nService: {service}\nLocation: {location}\nDate: {date} at {time}\n\nWe will be in touch shortly to confirm.\n\nYour cove Team"
   }
 }

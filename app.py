@@ -1,10 +1,11 @@
 # COVE Website Rebuild — app.py — Flask application factory
 import os
 
-from flask import Flask, render_template
+from flask import Flask, g, render_template
 
 from config import config
 from extensions import db, mail, HAS_MAIL
+from i18n import SUPPORTED_LANGUAGES, resolve_language, translate, with_lang_cookie
 
 
 def create_app(config_name=None):
@@ -34,6 +35,14 @@ def create_app(config_name=None):
     app.register_blueprint(booking_bp, url_prefix="/termin")
     app.register_blueprint(api_bp, url_prefix="/api")
 
+    @app.before_request
+    def choose_language():
+        g.lang = resolve_language()
+
+    @app.after_request
+    def persist_language(response):
+        return with_lang_cookie(response)
+
     @app.errorhandler(404)
     def not_found(_e):
         return render_template("404.html"), 404
@@ -45,6 +54,9 @@ def create_app(config_name=None):
             "PHONE": content.PHONE,
             "GOOGLE_REVIEWS_LINK": content.GOOGLE_REVIEWS_LINK,
             "SERVICES": content.SERVICES,
+            "current_lang": getattr(g, "lang", "de"),
+            "supported_languages": SUPPORTED_LANGUAGES,
+            "t": translate,
         }
 
     with app.app_context():

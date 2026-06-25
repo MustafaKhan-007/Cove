@@ -14,7 +14,11 @@
     "wiki": "Wiki",
     "faq": "F.A.Q.",
     "menu_open": "Menü öffnen",
-    "menu_close": "Menü schließen"
+    "menu_close": "Menü schließen",
+    "home_aria": "COVE Startseite",
+    "main_aria": "Hauptnavigation",
+    "language_de": "Deutsch",
+    "language_en": "Englisch"
   },
   "hero": {
     "eyebrow": "MAßSCHNEIDER SEIT GENERATIONEN",
@@ -29,7 +33,57 @@
   "services": {
     "eyebrow": "UNSERE EXPERTISE",
     "title": "Gefertigt für Sie.<br>Jedes Detail nach Maß.",
-    "discover": "Entdecken"
+    "discover": "Entdecken",
+    "items": {
+      "massanzug": {
+        "title": "MAßANZUG",
+        "desc": "Ruhige Linie. Präziser Sitz."
+      },
+      "masshemd": {
+        "title": "MAßHEMD",
+        "desc": "Kragen, Manschette und Passform nach Maß."
+      },
+      "blog": {
+        "title": "COVE BLOG",
+        "desc": "Stilwissen aus der Maßschneiderei."
+      },
+      "standorte": {
+        "title": "STANDORTE",
+        "desc": "19 Ateliers deutschlandweit."
+      },
+      "hochzeit": {
+        "title": "HOCHZEIT",
+        "desc": "Garderobe für große Tage."
+      },
+      "hemdkonfigurator": {
+        "title": "HEMDEN KONFIGURATOR",
+        "desc": "Ihr Maßhemd online entwerfen."
+      },
+      "schuhkonfigurator": {
+        "title": "SCHUH KONFIGURATOR",
+        "desc": "Schuhe individuell gestalten."
+      },
+      "sakko": {
+        "title": "MAßSAKKO",
+        "desc": "Haltung für Business und Freizeit."
+      },
+      "mantel": {
+        "title": "MAßMANTEL",
+        "desc": "Outerwear mit klarer Silhouette."
+      },
+      "masshose": {
+        "title": "MAßHOSE",
+        "desc": "Sauberer Fall und Komfort."
+      },
+      "schuhe": {
+        "title": "SCHUHE",
+        "desc": "Das Fundament der Garderobe."
+      },
+      "onlineshop": {
+        "title": "ONLINESHOP",
+        "desc": "Accessoires, Pflege und Geschenke."
+      }
+    }
   },
   "gallery": {
     "eyebrow": "EINBLICKE",
@@ -40,7 +94,14 @@
   "about": {
     "eyebrow": "ÜBER UNS",
     "title": "Maßkleidung mit Tradition und Leidenschaft",
-    "cta": "Mehr erfahren"
+    "cta": "Mehr erfahren",
+    "values_tradition": "Tradition",
+    "values_tradition_body": "Ein jahrhundertealtes Handwerk, gepflegt seit 1999 — Maßschneiderei nach alter Schule.",
+    "values_quality": "Qualität",
+    "values_quality_body": "Edelste Stoffe europäischer Webereien, sorgfältig verarbeitet — 100% Made in EU.",
+    "values_individuality": "Individualität",
+    "values_individuality_body": "Jedes Stück entsteht ganz nach Ihren Maßen und Wünschen — individuell, wertvoll, zeitlos.",
+    "fallback_body": "Seit 1999 gilt für uns die Devise „Individuell – wertvoll – zeitlos mit Zeitgeist“. Wir kümmern uns nach alter Tradition um maßgeschneiderte Garderobe."
   },
   "appointment": {
     "title": "Ihr persönlicher Termin",
@@ -52,7 +113,34 @@
     "title": "Was unsere Kunden sagen",
     "summary": "Basierend auf {count} Rezensionen",
     "read_more": "mehr lesen",
-    "all": "Alle Rezensionen auf Google"
+    "all": "Alle Rezensionen auf Google",
+    "items": [
+      {
+        "time": "vor 2 Wochen",
+        "text": "Hervorragende Beratung und erstklassige Verarbeitung. Mein Maßanzug sitzt wie angegossen — absolute Empfehlung."
+      },
+      {
+        "time": "vor 1 Monat",
+        "text": "Vom ersten Termin bis zur Anprobe ein durchweg professioneller und angenehmer Ablauf. Die Qualität ist außergewöhnlich."
+      },
+      {
+        "time": "vor 3 Wochen",
+        "text": "Kompetentes Team, edle Stoffe und ein perfekter Sitz. Hier wird Maßschneiderei noch als Handwerk gelebt."
+      },
+      {
+        "time": "vor 2 Monaten",
+        "text": "Für meine Hochzeit habe ich hier meinen Anzug fertigen lassen. Das Ergebnis hat alle Erwartungen übertroffen."
+      },
+      {
+        "time": "vor 1 Woche",
+        "text": "Individuelle Beratung auf höchstem Niveau. Man fühlt sich von der ersten Minute an bestens aufgehoben."
+      },
+      {
+        "time": "vor 1 Monat",
+        "text": "Tradition trifft Moderne. Der Maßanzug ist ein Meisterwerk und die Betreuung war herausragend."
+      }
+    ],
+    "google_user": "Google Nutzer"
   },
   "locations": {
     "title": "19 Standorte deutschlandweit",
@@ -63,7 +151,12 @@
     "back": "Alle Standorte",
     "address": "Adresse",
     "phone": "Telefon",
-    "hours": "Öffnungszeiten"
+    "hours": "Öffnungszeiten",
+    "selected": "Ausgewählter Standort",
+    "directions": "Route planen",
+    "by_appointment": "Nach Vereinbarung",
+    "address_pending": "Adresse folgt",
+    "map_title": "cove Standortkarte"
   },
   "wiki": {
     "eyebrow": "COVE WIKI",
@@ -74,7 +167,39 @@
     "related": "Verwandte Artikel",
     "read_time": "Min. Lesezeit",
     "index_title": "Das cove-Wiki",
-    "index_subtitle": "Das Lexikon der Maßschneiderei — von A bis Z."
+    "index_subtitle": "Das Lexikon der Maßschneiderei — von A bis Z.",
+    "articles": {
+      "bespoke": {
+        "title": "Bespoke",
+        "meta": "Bespoke bezeichnet die höchste Stufe der Maßschneiderei.",
+        "body": "Bespoke bezeichnet die Königsklasse der Maßschneiderei: ein Kleidungsstück, das vollständig nach den individuellen Maßen und Wünschen des Kunden von Grund auf entworfen und gefertigt wird."
+      },
+      "full-canvas": {
+        "title": "Full Canvas",
+        "meta": "Full Canvas — die hochwertigste Verarbeitung eines Sakkos.",
+        "body": "Bei der Full-Canvas-Verarbeitung wird ein durchgehender Rosshaareinlage zwischen Oberstoff und Futter eingearbeitet, die dem Sakko Form und Langlebigkeit verleiht."
+      },
+      "hochzeitsanzug": {
+        "title": "Hochzeitsanzug",
+        "meta": "Der maßgeschneiderte Hochzeitsanzug.",
+        "body": "Ein maßgeschneiderter Hochzeitsanzug wird ganz auf den Bräutigam und den Anlass abgestimmt — vom Stoff über den Schnitt bis zu den persönlichen Details."
+      },
+      "kaschmir-cashmere": {
+        "title": "Kaschmir (Cashmere)",
+        "meta": "Kaschmir — eine der edelsten Naturfasern.",
+        "body": "Kaschmir zählt zu den edelsten Naturfasern überhaupt. Die feine Wolle der Kaschmirziege ist besonders weich, leicht und wärmend."
+      },
+      "harris-tweed": {
+        "title": "Harris Tweed",
+        "meta": "Harris Tweed — handgewebt auf den Äusseren Hebriden.",
+        "body": "Harris Tweed ist ein handgewebtes Wollgewebe von den schottischen Äusseren Hebriden und durch ein eigenes Gesetz geschützt. Es steht für Robustheit und zeitlosen Stil."
+      },
+      "flanell": {
+        "title": "Flanell",
+        "meta": "Flanell — weicher, angerauter Wollstoff.",
+        "body": "Flanell ist ein weicher, leicht angerauter Wollstoff mit charakteristisch wärmender Haptik — ein Klassiker für Herbst- und Wintergarderobe."
+      }
+    }
   },
   "footer": {
     "tagline": "Maßbekleidung vom Maßschneider — seit 1999.",
@@ -118,11 +243,37 @@
     "edit": "Bearbeiten",
     "success": "Vielen Dank! Ihre Terminanfrage ist eingegangen.",
     "service_beratung": "BERATUNG",
-    "service_sonstiges": "SONSTIGES"
+    "service_sonstiges": "SONSTIGES",
+    "thanks": "Vielen Dank!",
+    "home": "Zur Startseite",
+    "error_generic": "Fehler. Bitte versuchen Sie es erneut.",
+    "error_network": "Netzwerkfehler. Bitte versuchen Sie es erneut."
   },
   "faq": {
     "title": "Häufige Fragen",
-    "subtitle": "Antworten rund um Maßbekleidung und Ihren Termin bei cove."
+    "subtitle": "Antworten rund um Maßbekleidung und Ihren Termin bei cove.",
+    "items": [
+      {
+        "q": "Wie läuft ein Maßtermin bei cove ab?",
+        "a": "In einem persönlichen Gespräch nehmen wir Maß, besprechen Stoffe, Schnitt und Details und beraten Sie umfassend zu Ihrer individuellen Garderobe."
+      },
+      {
+        "q": "Wie lange dauert die Anfertigung eines Maßanzugs?",
+        "a": "Die Fertigung eines Maßanzugs dauert in der Regel mehrere Wochen, abhängig von Modell, Stoff und Auslastung. Gerne nennen wir Ihnen beim Termin einen konkreten Zeitrahmen."
+      },
+      {
+        "q": "Welche Stoffe bietet cove an?",
+        "a": "Wir arbeiten mit führenden europäischen Webereien und bieten eine große Auswahl an Wolle, Kaschmir, Tweed, Flanell und weiteren edlen Materialien."
+      },
+      {
+        "q": "An welchen Standorten ist cove vertreten?",
+        "a": "cove ist an 19 Standorten deutschlandweit vertreten — unter anderem in Berlin, Hamburg, München, Düsseldorf, Köln und Frankfurt."
+      },
+      {
+        "q": "Kann ich einen Termin online vereinbaren?",
+        "a": "Ja, Sie können bequem online einen Beratungstermin in Ihrer gewünschten Filiale vereinbaren."
+      }
+    ]
   },
   "shop": {
     "title": "Shop",
@@ -130,10 +281,43 @@
     "add_to_cart": "In den Warenkorb",
     "view_original": "Im Original-Shop ansehen",
     "categories": "Kategorien",
-    "all": "Alle Produkte"
+    "all": "Alle Produkte",
+    "all_brands": "Alle Marken",
+    "search_placeholder": "Produkt suchen...",
+    "empty_category": "Keine Produkte in dieser Kategorie.",
+    "category_labels": {}
   },
   "common": {
     "discover_more": "Mehr entdecken",
-    "loading": "Wird geladen…"
+    "loading": "Wird geladen…",
+    "route_home": "Zur Startseite",
+    "not_found_title": "Diese Seite existiert nicht.",
+    "not_found_body": "Vielleicht finden Sie, was Sie suchen, auf unserer Startseite.",
+    "brand_eyebrow": "cove",
+    "close": "Schließen",
+    "previous": "Zurück",
+    "next_item": "Weiter"
+  },
+  "stories": {
+    "eyebrow": "AUS DEM ATELIER",
+    "title": "Einblicke mit Bedeutung.",
+    "bespoke_label": "BESPOKE",
+    "bespoke_title": "Der Schnitt beginnt im Gespräch.",
+    "bespoke_body": "Maße, Haltung, Anlass und persönlicher Stil bestimmen die Linie — nicht ein fertiges Raster.",
+    "cloth_label": "STOFFE",
+    "cloth_title": "Material mit Charakter.",
+    "cloth_body": "Von Popeline bis Flanell: die Auswahl entscheidet über Fall, Griff und Alltagstauglichkeit.",
+    "fitting_label": "ANPROBE",
+    "fitting_title": "Ruhige Details für große Tage.",
+    "fitting_body": "Hochzeitsgarderobe soll präsent sein, ohne den Träger zu übertönen."
+  },
+  "booking_api": {
+    "missing_fields": "Bitte füllen Sie alle Pflichtfelder aus.",
+    "invalid_email": "Bitte geben Sie eine gültige E-Mail-Adresse an.",
+    "privacy_required": "Bitte stimmen Sie der Datenschutzerklärung zu.",
+    "invalid_date": "Ungültiges Datum.",
+    "success_long": "Vielen Dank! Ihre Terminanfrage ist eingegangen. Wir bestätigen Ihren Termin in Kürze per E-Mail.",
+    "mail_subject": "Ihre Terminanfrage bei cove",
+    "mail_body": "Hallo {name},\n\nvielen Dank für Ihre Terminanfrage bei cove.\n\nService: {service}\nStandort: {location}\nDatum: {date} um {time} Uhr\n\nWir melden uns in Kürze zur Bestätigung.\n\nIhr cove Team"
   }
 }

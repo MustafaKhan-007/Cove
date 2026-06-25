@@ -57,14 +57,22 @@ function updateLangButtons(lang) {
 }
 
 function currentLang() {
-  return localStorage.getItem("cove_lang") || "de";
+  return document.documentElement.lang || localStorage.getItem("cove_lang") || "de";
+}
+
+function setServerLanguage(lang) {
+  localStorage.setItem("cove_lang", lang);
+  document.cookie = `cove_lang=${lang}; path=/; max-age=31536000; SameSite=Lax`;
+  const url = new URL(window.location.href);
+  url.searchParams.set("lang", lang);
+  window.location.href = url.toString();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   loadLanguage(currentLang());
   document.querySelectorAll(".lang-btn").forEach((btn) => {
-    btn.addEventListener("click", () => loadLanguage(btn.dataset.lang));
+    btn.addEventListener("click", () => setServerLanguage(btn.dataset.lang));
   });
 });
 
-window.coveI18n = { loadLanguage, currentLang, getNestedValue, t: (key) => getNestedValue(TRANSLATIONS[currentLang()], key) };
+window.coveI18n = { loadLanguage, currentLang, setServerLanguage, getNestedValue, t: (key) => getNestedValue(TRANSLATIONS[currentLang()], key) };

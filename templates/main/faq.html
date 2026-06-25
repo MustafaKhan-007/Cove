@@ -7,19 +7,19 @@
 <div class="page-spacer"></div>
 <section class="section">
   <div class="section__header">
-    <span class="section-eyebrow" data-i18n="nav.faq">F.A.Q.</span>
-    <h1 data-i18n="faq.title">Häufige Fragen</h1>
-    <p style="color:var(--color-text-secondary);margin-top:16px;" data-i18n="faq.subtitle">Antworten rund um Maßbekleidung und Ihren Termin bei cove.</p>
+    <span class="section-eyebrow" data-i18n="nav.faq">{{ t('nav.faq') }}</span>
+    <h1 data-i18n="faq.title">{{ t('faq.title') }}</h1>
+    <p style="color:var(--color-text-secondary);margin-top:16px;" data-i18n="faq.subtitle">{{ t('faq.subtitle') }}</p>
   </div>
 
   <div class="faq-list">
     {% for item in faqs %}
       <div class="faq-item">
         <button class="faq-item__q">
-          <span>{{ item.q }}</span>
+          <span>{{ t('faq.items.' ~ loop.index0 ~ '.q', default=item.q) }}</span>
           <span class="faq-item__icon">+</span>
         </button>
-        <div class="faq-item__a"><p>{{ item.a }}</p></div>
+        <div class="faq-item__a"><p>{{ t('faq.items.' ~ loop.index0 ~ '.a', default=item.a) }}</p></div>
       </div>
     {% endfor %}
   </div>

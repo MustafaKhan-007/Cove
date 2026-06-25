@@ -9,8 +9,8 @@
   <img src="{{ url_for('static', filename='images/cove_original/home-card-8.jpg') }}" alt="cove Atelier"
        onerror="this.src='{{ url_for('static', filename='images/cove_original/slide-2-2.jpg') }}'">
   <div class="page-hero__content">
-    <span class="section-eyebrow" data-i18n="about.eyebrow">ÜBER UNS</span>
-    <h1>{{ about.h1[0] if about.h1 else "Über uns" }}</h1>
+    <span class="section-eyebrow" data-i18n="about.eyebrow">{{ t('about.eyebrow') }}</span>
+    <h1>{{ about.h1[0] if about.h1 and current_lang == 'de' else t('about.title') }}</h1>
   </div>
 </section>
 
@@ -31,11 +31,15 @@
 <section class="section">
   <div class="about-teaser">
     <div class="prose animate-on-scroll">
-      <span class="section-eyebrow">cove</span>
-      <h2>Maßkleidung mit Tradition und Leidenschaft</h2>
+      <span class="section-eyebrow" data-i18n="common.brand_eyebrow">{{ t('common.brand_eyebrow') }}</span>
+      <h2 data-i18n="about.title">{{ t('about.title') }}</h2>
       <div class="gold-rule gold-rule--left"></div>
-      {% for p in paras[:3] %}<p>{{ p }}</p>{% endfor %}
-      <a href="/termin" class="btn btn--gold mt-5" data-i18n="nav.book">Termin buchen</a>
+      {% if current_lang == 'de' and paras %}
+        {% for p in paras[:3] %}<p>{{ p }}</p>{% endfor %}
+      {% else %}
+        <p>{{ t('about.fallback_body') }}</p>
+      {% endif %}
+      <a href="/termin" class="btn btn--gold mt-5" data-i18n="nav.book">{{ t('nav.book') }}</a>
     </div>
     <div class="about-teaser__media animate-on-scroll">
       <img src="{{ url_for('static', filename='images/cove_original/slide-1-5.jpg') }}" alt="cove Handwerk" loading="lazy"
@@ -50,16 +54,16 @@
     <div class="gold-rule"></div>
     <div class="wiki-teaser__cards" style="grid-template-columns:repeat(3,1fr);max-width:1000px;margin:0 auto;">
       <div class="wiki-card animate-on-scroll">
-        <div class="wiki-card__title">Tradition</div>
-        <p class="wiki-card__teaser" style="-webkit-line-clamp:4;">Ein jahrhundertealtes Handwerk, gepflegt seit 1999 — Maßschneiderei nach alter Schule.</p>
+        <div class="wiki-card__title" data-i18n="about.values_tradition">{{ t('about.values_tradition') }}</div>
+        <p class="wiki-card__teaser" style="-webkit-line-clamp:4;" data-i18n="about.values_tradition_body">{{ t('about.values_tradition_body') }}</p>
       </div>
       <div class="wiki-card animate-on-scroll">
-        <div class="wiki-card__title">Qualität</div>
-        <p class="wiki-card__teaser" style="-webkit-line-clamp:4;">Edelste Stoffe europäischer Webereien, sorgfältig verarbeitet — 100% Made in EU.</p>
+        <div class="wiki-card__title" data-i18n="about.values_quality">{{ t('about.values_quality') }}</div>
+        <p class="wiki-card__teaser" style="-webkit-line-clamp:4;" data-i18n="about.values_quality_body">{{ t('about.values_quality_body') }}</p>
       </div>
       <div class="wiki-card animate-on-scroll">
-        <div class="wiki-card__title">Individualität</div>
-        <p class="wiki-card__teaser" style="-webkit-line-clamp:4;">Jedes Stück entsteht ganz nach Ihren Maßen und Wünschen — individuell, wertvoll, zeitlos.</p>
+        <div class="wiki-card__title" data-i18n="about.values_individuality">{{ t('about.values_individuality') }}</div>
+        <p class="wiki-card__teaser" style="-webkit-line-clamp:4;" data-i18n="about.values_individuality_body">{{ t('about.values_individuality_body') }}</p>
       </div>
     </div>
   </div>

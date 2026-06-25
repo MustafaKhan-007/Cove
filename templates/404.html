@@ -4,8 +4,8 @@
 {% block content %}
 <div class="error-page">
   <div class="error-page__code">404</div>
-  <h2>Diese Seite existiert nicht.</h2>
-  <p style="color:var(--color-text-secondary);">Vielleicht finden Sie, was Sie suchen, auf unserer Startseite.</p>
-  <a href="/" class="btn btn--gold">Zur Startseite</a>
+  <h2 data-i18n="common.not_found_title">{{ t('common.not_found_title') }}</h2>
+  <p style="color:var(--color-text-secondary);" data-i18n="common.not_found_body">{{ t('common.not_found_body') }}</p>
+  <a href="/" class="btn btn--gold" data-i18n="common.route_home">{{ t('common.route_home') }}</a>
 </div>
 {% endblock %}

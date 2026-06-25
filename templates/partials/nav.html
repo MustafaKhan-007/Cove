@@ -1,35 +1,35 @@
 {# COVE Website Rebuild — templates/partials/nav.html — fixed navigation #}
 <nav class="nav" id="nav">
   <div class="nav__inner">
-    <a href="/" class="nav__logo" aria-label="COVE Startseite">
+    <a href="/" class="nav__logo" aria-label="{{ t('nav.home_aria') }}">
       <img src="{{ url_for('static', filename='images/cove_original/logo.svg') }}" alt="COVE" height="34">
     </a>
 
-    <div class="nav__links" aria-label="Hauptnavigation">
+    <div class="nav__links" aria-label="{{ t('nav.main_aria') }}">
       <div class="nav-dropdown">
-        <button class="nav-link nav-dropdown__button" data-i18n="nav.bespoke">Bespoke</button>
+        <button class="nav-link nav-dropdown__button" data-i18n="nav.bespoke">{{ t('nav.bespoke') }}</button>
         <div class="nav-dropdown__menu">
-          <a href="/massanzug" data-i18n="nav.massanzug">MAßANZUG</a>
-          <a href="/masshemd" data-i18n="nav.masshemd">MAßHEMD</a>
-          <a href="/sakko" data-i18n="nav.sakko">MAßSAKKO</a>
-          <a href="/mantel" data-i18n="nav.mantel">MAßMANTEL</a>
-          <a href="/schuhe" data-i18n="nav.schuhe">SCHUHE</a>
+          <a href="/massanzug" data-i18n="nav.massanzug">{{ t('nav.massanzug') }}</a>
+          <a href="/masshemd" data-i18n="nav.masshemd">{{ t('nav.masshemd') }}</a>
+          <a href="/sakko" data-i18n="nav.sakko">{{ t('nav.sakko') }}</a>
+          <a href="/mantel" data-i18n="nav.mantel">{{ t('nav.mantel') }}</a>
+          <a href="/schuhe" data-i18n="nav.schuhe">{{ t('nav.schuhe') }}</a>
         </div>
       </div>
-      <a href="/hochzeit" class="nav-link" data-i18n="nav.hochzeit">HOCHZEIT</a>
-      <a href="/standorte" class="nav-link" data-i18n="nav.locations">Standorte</a>
-      <a href="/shop" class="nav-link" data-i18n="nav.shop">Shop</a>
-      <a href="/faq" class="nav-link" data-i18n="nav.faq">F.A.Q.</a>
+      <a href="/hochzeit" class="nav-link" data-i18n="nav.hochzeit">{{ t('nav.hochzeit') }}</a>
+      <a href="/standorte" class="nav-link" data-i18n="nav.locations">{{ t('nav.locations') }}</a>
+      <a href="/shop" class="nav-link" data-i18n="nav.shop">{{ t('nav.shop') }}</a>
+      <a href="/faq" class="nav-link" data-i18n="nav.faq">{{ t('nav.faq') }}</a>
     </div>
 
     <div class="nav__actions">
-      <a href="/termin" class="btn btn--gold btn--sm" data-i18n="nav.book">Termin buchen</a>
+      <a href="/termin" class="btn btn--gold btn--sm" data-i18n="nav.book">{{ t('nav.book') }}</a>
       <div class="nav__lang">
-        <button class="lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
+        <button class="lang-btn" data-lang="de" aria-label="{{ t('nav.language_de') }}">DE</button>
         <span class="nav__lang-sep">|</span>
-        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        <button class="lang-btn" data-lang="en" aria-label="{{ t('nav.language_en') }}">EN</button>
       </div>
-      <button class="nav__hamburger" aria-label="Menü öffnen" id="menuToggle">
+      <button class="nav__hamburger" aria-label="{{ t('nav.menu_open') }}" id="menuToggle">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -38,18 +38,18 @@
   <div class="nav__overlay" id="navOverlay">
     <div class="nav__overlay-inner">
       <div class="nav__overlay-col nav__overlay-col--primary">
-        <a href="/massanzug" class="nav__overlay-link" data-i18n="nav.massanzug">MAßANZUG</a>
-        <a href="/masshemd" class="nav__overlay-link" data-i18n="nav.masshemd">MAßHEMD</a>
-        <a href="/hochzeit" class="nav__overlay-link" data-i18n="nav.hochzeit">HOCHZEIT</a>
-        <a href="/sakko" class="nav__overlay-link" data-i18n="nav.sakko">MAßSAKKO</a>
-        <a href="/mantel" class="nav__overlay-link" data-i18n="nav.mantel">MAßMANTEL</a>
-        <a href="/schuhe" class="nav__overlay-link" data-i18n="nav.schuhe">SCHUHE</a>
+        <a href="/massanzug" class="nav__overlay-link" data-i18n="nav.massanzug">{{ t('nav.massanzug') }}</a>
+        <a href="/masshemd" class="nav__overlay-link" data-i18n="nav.masshemd">{{ t('nav.masshemd') }}</a>
+        <a href="/hochzeit" class="nav__overlay-link" data-i18n="nav.hochzeit">{{ t('nav.hochzeit') }}</a>
+        <a href="/sakko" class="nav__overlay-link" data-i18n="nav.sakko">{{ t('nav.sakko') }}</a>
+        <a href="/mantel" class="nav__overlay-link" data-i18n="nav.mantel">{{ t('nav.mantel') }}</a>
+        <a href="/schuhe" class="nav__overlay-link" data-i18n="nav.schuhe">{{ t('nav.schuhe') }}</a>
       </div>
       <div class="nav__overlay-col nav__overlay-col--secondary">
-        <a href="/standorte" data-i18n="nav.locations">Standorte</a>
-        <a href="/faq" data-i18n="nav.faq">F.A.Q.</a>
-        <a href="/shop" data-i18n="nav.shop">Shop</a>
-        <a href="/termin" class="btn btn--gold" data-i18n="nav.book">Termin buchen</a>
+        <a href="/standorte" data-i18n="nav.locations">{{ t('nav.locations') }}</a>
+        <a href="/faq" data-i18n="nav.faq">{{ t('nav.faq') }}</a>
+        <a href="/shop" data-i18n="nav.shop">{{ t('nav.shop') }}</a>
+        <a href="/termin" class="btn btn--gold" data-i18n="nav.book">{{ t('nav.book') }}</a>
       </div>
     </div>
   </div>

@@ -8,9 +8,9 @@
   <img src="{{ url_for('static', filename='images/cove_original/slide-1-8.jpg') }}" alt="cove Wiki"
        onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-4.jpg') }}'">
   <div class="page-hero__content">
-    <span class="section-eyebrow" data-i18n="wiki.eyebrow">COVE WIKI</span>
-    <h1 data-i18n="wiki.index_title">Das cove-Wiki</h1>
-    <p data-i18n="wiki.index_subtitle">Das Lexikon der Maßschneiderei — von A bis Z.</p>
+    <span class="section-eyebrow" data-i18n="wiki.eyebrow">{{ t('wiki.eyebrow') }}</span>
+    <h1 data-i18n="wiki.index_title">{{ t('wiki.index_title') }}</h1>
+    <p data-i18n="wiki.index_subtitle">{{ t('wiki.index_subtitle') }}</p>
   </div>
 </section>
 
@@ -32,9 +32,9 @@
         {% for entry in groups[letter] %}
           <div class="wiki-entry">
             {% if entry.slug in seeded %}
-              <a href="/wiki/{{ entry.slug }}" class="wiki-entry__seeded">{{ entry.title }}</a>
+              <a href="/wiki/{{ entry.slug }}" class="wiki-entry__seeded">{{ t('wiki.articles.' ~ entry.slug ~ '.title', default=entry.title) }}</a>
             {% else %}
-              <a href="/wiki/{{ entry.slug }}">{{ entry.title }}</a>
+              <a href="/wiki/{{ entry.slug }}">{{ t('wiki.articles.' ~ entry.slug ~ '.title', default=entry.title) }}</a>
             {% endif %}
           </div>
         {% endfor %}

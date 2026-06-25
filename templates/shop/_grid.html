@@ -1,9 +1,9 @@
 {# COVE Website Rebuild — templates/shop/_grid.html — product grid #}
 {% if products %}
   <div class="shop-filters">
-    <input type="search" class="form-input shop-filter__search" id="shopSearch" placeholder="Produkt suchen..." aria-label="Produkt suchen">
-    <select class="form-select shop-filter__select" id="shopBrand" aria-label="Marke filtern">
-      <option value="">Alle Marken</option>
+    <input type="search" class="form-input shop-filter__search" id="shopSearch" placeholder="{{ t('shop.search_placeholder') }}" aria-label="{{ t('shop.search_placeholder') }}" data-i18n-attr="placeholder:shop.search_placeholder,aria-label:shop.search_placeholder">
+    <select class="form-select shop-filter__select" id="shopBrand" aria-label="{{ t('shop.all_brands') }}" data-i18n-attr="aria-label:shop.all_brands">
+      <option value="" data-i18n="shop.all_brands">{{ t('shop.all_brands') }}</option>
       {% for brand in products | map(attribute='brand') | unique | list %}
         {% if brand %}<option value="{{ brand }}">{{ brand }}</option>{% endif %}
       {% endfor %}
@@ -22,7 +22,7 @@
           {% else %}
             <img src="{{ url_for('static', filename='images/cove_original/home-card-7.jpg') }}" alt="{{ p.name }}" loading="lazy">
           {% endif %}
-          <div class="product-card__cart" data-i18n="shop.view_original">Im Original-Shop ansehen</div>
+          <div class="product-card__cart" data-i18n="shop.view_original">{{ t('shop.view_original') }}</div>
         </a>
         {% if p.brand %}<div class="product-card__brand">{{ p.brand }}</div>{% endif %}
         <a href="{{ p.url }}" target="_blank" rel="noopener"><div class="product-card__name">{{ p.name }}</div></a>
@@ -32,7 +32,7 @@
     {% endfor %}
   </div>
 {% else %}
-  <p style="color:var(--color-text-secondary);" data-i18n="common.loading">Keine Produkte in dieser Kategorie.</p>
+  <p style="color:var(--color-text-secondary);" data-i18n="shop.empty_category">{{ t('shop.empty_category') }}</p>
 {% endif %}
 {# NOTE: checkout is not reimplemented — links redirect to the original cove.de shop.
    TODO: integrate a real cart/checkout backend for production. #}

@@ -10,19 +10,21 @@
   <article class="article">
     {% set paras = (article.text_blocks or []) | selectattr('tag', 'equalto', 'p') | map(attribute='text') | list %}
     {% set words = (paras | join(' ')).split(' ') | length %}
-    <span class="section-eyebrow" data-i18n="wiki.eyebrow">COVE WIKI</span>
-    <h1>{{ article.title }}</h1>
+    <span class="section-eyebrow" data-i18n="wiki.eyebrow">{{ t('wiki.eyebrow') }}</span>
+    <h1>{{ t('wiki.articles.' ~ article.slug ~ '.title', default=article.title) }}</h1>
     <div class="article__meta">
-      <span class="article__tag">Wiki</span>
-      <span>{{ ((words / 200) | round(0, 'ceil')) | int or 1 }} <span data-i18n="wiki.read_time">Min. Lesezeit</span></span>
+      <span class="article__tag">{{ t('nav.wiki') }}</span>
+      <span>{{ ((words / 200) | round(0, 'ceil')) | int or 1 }} <span data-i18n="wiki.read_time">{{ t('wiki.read_time') }}</span></span>
     </div>
     <div class="gold-rule gold-rule--left"></div>
 
     <div class="prose">
-      {% if paras %}
+      {% if t('wiki.articles.' ~ article.slug ~ '.body', default='') %}
+        <p>{{ t('wiki.articles.' ~ article.slug ~ '.body') }}</p>
+      {% elif paras and current_lang == 'de' %}
         {% for p in paras %}<p>{{ p }}</p>{% endfor %}
       {% else %}
-        <p>{{ article.meta_description }}</p>
+        <p>{{ t('wiki.articles.' ~ article.slug ~ '.meta', default=article.meta_description) }}</p>
       {% endif %}
       {% if article.images %}
         {% for img in article.images[:3] %}
@@ -33,12 +35,12 @@
 
     {% if related %}
       <div class="article-related">
-        <span class="section-eyebrow" data-i18n="wiki.related">Verwandte Artikel</span>
+        <span class="section-eyebrow" data-i18n="wiki.related">{{ t('wiki.related') }}</span>
         <div class="wiki-teaser__cards" style="grid-template-columns:repeat(3,1fr);margin-top:24px;">
           {% for r in related %}
             <a href="/wiki/{{ r.slug }}" class="wiki-card">
-              <div class="wiki-card__title">{{ r.title }}</div>
-              <p class="wiki-card__teaser">{{ r.meta_description or (r.text_blocks and r.text_blocks[0].text) }}</p>
+              <div class="wiki-card__title">{{ t('wiki.articles.' ~ r.slug ~ '.title', default=r.title) }}</div>
+              <p class="wiki-card__teaser">{{ t('wiki.articles.' ~ r.slug ~ '.meta', default=r.meta_description or (r.text_blocks and r.text_blocks[0].text)) }}</p>
             </a>
           {% endfor %}
         </div>
@@ -46,7 +48,7 @@
     {% endif %}
 
     <div style="margin-top:40px;">
-      <a href="/wiki" class="link-arrow" data-i18n="wiki.back">Zurück zum Wiki</a>
+      <a href="/wiki" class="link-arrow" data-i18n="wiki.back">{{ t('wiki.back') }}</a>
     </div>
   </article>
 </section>

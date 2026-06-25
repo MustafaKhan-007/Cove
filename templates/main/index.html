@@ -12,9 +12,9 @@
     <img src="{{ url_for('static', filename='images/ui/hero-showroom.png') }}" alt="cove Showroom mit Maßanzügen und Schuhen">
   </div>
   <div class="hero__content">
-    <span class="hero__eyebrow" data-i18n="hero.eyebrow">MAßSCHNEIDER SEIT GENERATIONEN</span>
-    <h1 class="hero__title" data-i18n="hero.title">MAßBEKLEIDUNG<br><span>VOM</span> MAßSCHNEIDER</h1>
-    <p class="hero__subtitle" data-i18n="hero.subtitle">Maßanzüge, Maßhemden und klassische Garderobe — gefertigt mit Tradition und Leidenschaft.</p>
+    <span class="hero__eyebrow" data-i18n="hero.eyebrow">{{ t('hero.eyebrow') }}</span>
+    <h1 class="hero__title" data-i18n="hero.title">{{ t('hero.title')|safe }}</h1>
+    <p class="hero__subtitle" data-i18n="hero.subtitle">{{ t('hero.subtitle') }}</p>
   </div>
 </section>
 
@@ -33,32 +33,18 @@
 {# 5.3 SERVICES GRID #}
 <section class="section" id="services">
   <div class="section__header animate-on-scroll">
-    <span class="section-eyebrow" data-i18n="services.eyebrow">UNSERE EXPERTISE</span>
-    <h2 data-i18n="services.title">Gefertigt für Sie.<br>Jedes Detail nach Maß.</h2>
+    <span class="section-eyebrow" data-i18n="services.eyebrow">{{ t('services.eyebrow') }}</span>
+    <h2 data-i18n="services.title">{{ t('services.title')|safe }}</h2>
   </div>
   <div class="services__grid animate-on-scroll">
-    {% set service_copy = {
-      'massanzug': 'Ruhige Linie. Präziser Sitz.',
-      'masshemd': 'Kragen, Manschette und Passform nach Maß.',
-      'blog': 'Stilwissen aus der Maßschneiderei.',
-      'standorte': '19 Ateliers deutschlandweit.',
-      'hochzeit': 'Garderobe für große Tage.',
-      'hemdkonfigurator': 'Ihr Maßhemd online entwerfen.',
-      'schuhkonfigurator': 'Schuhe individuell gestalten.',
-      'sakko': 'Haltung für Business und Freizeit.',
-      'mantel': 'Outerwear mit klarer Silhouette.',
-      'masshose': 'Sauberer Fall und Komfort.',
-      'schuhe': 'Das Fundament der Garderobe.',
-      'onlineshop': 'Accessoires, Pflege und Geschenke.'
-    } %}
     {% for s in services %}
       <a href="{{ s.route }}" class="service-card service-card--{{ s.span }}"{% if s.route.startswith('http') %} target="_blank" rel="noopener"{% endif %}>
         {% set card_path = 'images/' ~ s.card if s.card.startswith('ui/') else 'images/cove_original/' ~ s.card %}
         <img src="{{ url_for('static', filename=card_path) }}" alt="{{ s.label_de }}" loading="lazy"
              onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-1.jpg') }}'">
         <div class="service-card__body">
-          <div class="service-card__title">{{ s.label_de }}</div>
-          <p class="service-card__desc">{{ service_copy[s.key] }}</p>
+          <div class="service-card__title">{{ t('services.items.' ~ s.key ~ '.title', default=s.label_de) }}</div>
+          <p class="service-card__desc">{{ t('services.items.' ~ s.key ~ '.desc') }}</p>
         </div>
       </a>
     {% endfor %}
@@ -68,32 +54,32 @@
 {# 5.4 EDITORIAL IMAGE STORIES #}
 <section class="section home-stories">
   <div class="section__header animate-on-scroll">
-    <span class="section-eyebrow">AUS DEM ATELIER</span>
-    <h2>Einblicke mit Bedeutung.</h2>
+    <span class="section-eyebrow">{{ t('stories.eyebrow') }}</span>
+    <h2>{{ t('stories.title') }}</h2>
   </div>
   <div class="home-stories__grid">
     <a href="/massanzug" class="story-card story-card--large animate-on-scroll">
       <img src="{{ url_for('static', filename='images/cove_original/slide-1-4.jpg') }}" alt="Maßanzug Beratung" loading="lazy">
       <div class="story-card__body">
-        <span class="section-eyebrow">BESPOKE</span>
-        <h3>Der Schnitt beginnt im Gespräch.</h3>
-        <p>Maße, Haltung, Anlass und persönlicher Stil bestimmen die Linie — nicht ein fertiges Raster.</p>
+        <span class="section-eyebrow">{{ t('stories.bespoke_label') }}</span>
+        <h3>{{ t('stories.bespoke_title') }}</h3>
+        <p>{{ t('stories.bespoke_body') }}</p>
       </div>
     </a>
     <a href="/masshemd" class="story-card animate-on-scroll">
       <img src="{{ url_for('static', filename='images/cove_original/slide-2-6.jpg') }}" alt="Stoffauswahl" loading="lazy">
       <div class="story-card__body">
-        <span class="section-eyebrow">STOFFE</span>
-        <h3>Material mit Charakter.</h3>
-        <p>Von Popeline bis Flanell: die Auswahl entscheidet über Fall, Griff und Alltagstauglichkeit.</p>
+        <span class="section-eyebrow">{{ t('stories.cloth_label') }}</span>
+        <h3>{{ t('stories.cloth_title') }}</h3>
+        <p>{{ t('stories.cloth_body') }}</p>
       </div>
     </a>
     <a href="/hochzeit" class="story-card animate-on-scroll">
       <img src="{{ url_for('static', filename='images/cove_original/slide-2-10.jpg') }}" alt="Anprobe" loading="lazy">
       <div class="story-card__body">
-        <span class="section-eyebrow">ANPROBE</span>
-        <h3>Ruhige Details für große Tage.</h3>
-        <p>Hochzeitsgarderobe soll präsent sein, ohne den Träger zu übertönen.</p>
+        <span class="section-eyebrow">{{ t('stories.fitting_label') }}</span>
+        <h3>{{ t('stories.fitting_title') }}</h3>
+        <p>{{ t('stories.fitting_body') }}</p>
       </div>
     </a>
   </div>
@@ -107,17 +93,17 @@
            onerror="this.src='{{ url_for('static', filename='images/cove_original/slide-2-1.jpg') }}'">
     </div>
     <div class="about-teaser__body animate-on-scroll">
-      <span class="section-eyebrow" data-i18n="about.eyebrow">ÜBER UNS</span>
-      <h2 data-i18n="about.title">Maßkleidung mit Tradition und Leidenschaft</h2>
+      <span class="section-eyebrow" data-i18n="about.eyebrow">{{ t('about.eyebrow') }}</span>
+      <h2 data-i18n="about.title">{{ t('about.title') }}</h2>
       <div class="gold-rule gold-rule--left"></div>
       {% set about_paras = (about.text_blocks or []) | selectattr('tag', 'equalto', 'p') | map(attribute='text') | list %}
       {% if about_paras %}
         <p>{{ about_paras[0] }}</p>
         {% if about_paras|length > 1 %}<p>{{ about_paras[1][:280] }}{% if about_paras[1]|length > 280 %}…{% endif %}</p>{% endif %}
       {% else %}
-        <p>Seit 1999 gilt für uns die Devise „Individuell – wertvoll – zeitlos mit Zeitgeist". Wir kümmern uns nach alter Tradition um maßgeschneiderte Garderobe.</p>
+        <p>{{ t('about.fallback_body') }}</p>
       {% endif %}
-      <a href="/ueber-uns" class="link-arrow" data-i18n="about.cta">Mehr erfahren</a> <span>&#8594;</span>
+      <a href="/ueber-uns" class="link-arrow" data-i18n="about.cta">{{ t('about.cta') }}</a> <span>&#8594;</span>
     </div>
   </div>
 </section>
@@ -126,25 +112,25 @@
 <section class="section">
   <div class="reviews__topline animate-on-scroll">
     <div class="reviews__summary">
-      <span class="section-eyebrow" data-i18n="reviews.title">Was unsere Kunden sagen</span>
+      <span class="section-eyebrow" data-i18n="reviews.title">{{ t('reviews.title') }}</span>
       <div class="stars">★★★★★</div>
       <div class="reviews__summary-text">
         <strong>{{ reviews.summary.rating or "4.9" }}</strong> —
-        <span data-i18n="reviews.summary" data-i18n-vars='{"count":"{{ reviews.summary.count or 837 }}"}'>Basierend auf {{ reviews.summary.count or 837 }} Rezensionen</span>
+        <span data-i18n="reviews.summary" data-i18n-vars='{"count":"{{ reviews.summary.count or 837 }}"}'>{{ t('reviews.summary', count=reviews.summary.count or 837) }}</span>
       </div>
     </div>
     <div class="reviews__cta">
-      <a href="{{ google_reviews_link }}" target="_blank" rel="noopener" class="btn btn--outline" data-i18n="reviews.all">Alle Rezensionen auf Google</a>
+      <a href="{{ google_reviews_link }}" target="_blank" rel="noopener" class="btn btn--outline" data-i18n="reviews.all">{{ t('reviews.all') }}</a>
     </div>
   </div>
   <div class="reviews__grid">
     {% for r in reviews.reviews[:6] %}
       <div class="review-card animate-on-scroll">
         <div class="review-card__stars">{% for _ in range(r.rating|int or 5) %}★{% endfor %}</div>
-        <p class="review-card__text">{{ r.text }}</p>
+        <p class="review-card__text">{{ t('reviews.items.' ~ loop.index0 ~ '.text', default=r.text) }}</p>
         <div class="review-card__meta">
-          <span class="review-card__name">{{ r.author or "Google Nutzer" }}</span>
-          {% if r.time %}<span class="review-card__time">{{ r.time }}</span>{% endif %}
+          <span class="review-card__name">{{ r.author or t('reviews.google_user') }}</span>
+          {% if r.time %}<span class="review-card__time">{{ t('reviews.items.' ~ loop.index0 ~ '.time', default=r.time) }}</span>{% endif %}
         </div>
       </div>
     {% endfor %}
