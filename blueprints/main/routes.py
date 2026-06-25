@@ -12,6 +12,8 @@ PRODUCT_ROUTE_MAP = {
     "sakko": {"key": "sakko", "title_de": "Maßsakko", "title_en": "Bespoke Jacket"},
     "mantel": {"key": "mantel", "title_de": "Maßmantel", "title_en": "Bespoke Coat"},
     "schuhe": {"key": "schuhe", "title_de": "Schuhwerk", "title_en": "Shoes"},
+    "cove-custom-shirt": {"key": "cove-custom-shirt", "title_de": "Hemden Konfigurator", "title_en": "Shirt Configurator"},
+    "herrenschuh-selber-designen": {"key": "herrenschuh-designen", "title_de": "Schuh Konfigurator", "title_en": "Shoe Configurator"},
 }
 
 

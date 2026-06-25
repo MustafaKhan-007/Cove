@@ -40,7 +40,11 @@
     {% set service_copy = {
       'massanzug': 'Ein persönlicher Anzug mit ruhiger Linie, präzisem Sitz und Stoffen, die über Jahre Bestand haben.',
       'masshemd': 'Maßhemden für Alltag und Anlass — Kragen, Manschette, Stoff und Passform nach Ihren Vorgaben.',
+      'blog': 'Inspiration, Stilwissen und Geschichten aus der Welt der Maßschneiderei.',
+      'standorte': '19 Ateliers deutschlandweit — finden Sie den passenden cove Standort in Ihrer Nähe.',
       'hochzeit': 'Klassische Hochzeitsgarderobe mit Maß, Zurückhaltung und Details, die zum Tag passen.',
+      'hemdkonfigurator': 'Entwerfen Sie Ihr Maßhemd online: Stoff, Kragen, Manschette und Details.',
+      'schuhkonfigurator': 'Individualisieren Sie Herrenschuhe nach Modell, Leder, Farbe und Finish.',
       'sakko': 'Ein Sakko nach Maß bringt Haltung in Business, Reise und private Garderobe.',
       'mantel': 'Mäntel und Outerwear mit klarer Silhouette, abgestimmt auf Stoff, Saison und Nutzung.',
       'masshose': 'Maßhosen mit sauberem Fall und Komfort — als separates Stück oder Teil eines Anzugs.',
@@ -48,7 +52,7 @@
       'onlineshop': 'Ready-to-wear, Accessoires, Pflege und Geschenke aus dem cove Sortiment.'
     } %}
     {% for s in services %}
-      <a href="{{ s.route }}" class="service-card service-card--{{ s.span }}">
+      <a href="{{ s.route }}" class="service-card service-card--{{ s.span }}"{% if s.route.startswith('http') %} target="_blank" rel="noopener"{% endif %}>
         <img src="{{ url_for('static', filename='images/cove_original/' ~ s.card) }}" alt="{{ s.label_de }}" loading="lazy"
              onerror="this.src='{{ url_for('static', filename='images/cove_original/home-card-1.jpg') }}'">
         <div class="service-card__body">
