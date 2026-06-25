@@ -408,11 +408,16 @@ button { font-family: var(--font-body); cursor: pointer; }
 .nav-link:hover { color: var(--color-gold-light); }
 .nav-dropdown {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 .nav-dropdown__button {
+  display: inline-flex;
+  align-items: center;
   background: none;
   border: 0;
   padding: 0;
+  line-height: 1;
 }
 .nav-dropdown__button::after {
   content: "";
@@ -544,6 +549,7 @@ button { font-family: var(--font-body); cursor: pointer; }
   display: inline-block;
   font-size: .48em;
   letter-spacing: .16em;
+  margin-right: .28em;
   transform: translateY(-.18em);
 }
 .hero__subtitle {
@@ -700,6 +706,52 @@ button { font-family: var(--font-body); cursor: pointer; }
   .story-card,
   .story-card--large {
     grid-template-rows: minmax(360px, 55vh) auto;
+  }
+}
+
+/* Review header placement: summary between first/middle cards, CTA between middle/right cards */
+.reviews__topline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-3);
+  align-items: end;
+  margin-bottom: var(--space-6);
+}
+.reviews__topline .reviews__summary {
+  grid-column: 1;
+  justify-self: end;
+  transform: translateX(50%);
+  text-align: left;
+  margin-bottom: 0;
+}
+.reviews__topline .reviews__cta {
+  grid-column: 2;
+  justify-self: end;
+  transform: translateX(50%);
+  margin-top: 0;
+}
+.reviews__topline .stars {
+  margin-top: var(--space-2);
+}
+
+/* Footer/contact links should read as real links. */
+.footer__social a,
+.footer__col a[href^="tel:"],
+.footer__col a[href^="mailto:"] {
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold-dim);
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 880px) {
+  .reviews__topline {
+    display: block;
+  }
+  .reviews__topline .reviews__summary,
+  .reviews__topline .reviews__cta {
+    transform: none;
+    text-align: center;
+    margin-bottom: var(--space-4);
   }
 }
 

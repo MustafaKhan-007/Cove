@@ -33,7 +33,7 @@
 
   <div class="loc-map">
     <iframe id="locMap" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-      src="{% if locations and locations[0].map_embed %}{{ locations[0].map_embed }}{% else %}https://www.google.com/maps?q=Deutschland&output=embed&z=6{% endif %}"
+      src="{% if locations and locations[0].coords %}https://www.google.com/maps?q={{ locations[0].coords.lat }},{{ locations[0].coords.lng }}&output=embed&z=15{% else %}https://www.google.com/maps?q=Deutschland&output=embed&z=6{% endif %}"
       title="cove Standortkarte"></iframe>
     {% if locations %}
       <aside class="loc-detail-panel" id="locDetail">
@@ -51,6 +51,9 @@
           <span class="info-card__label" data-i18n="locations.hours">Öffnungszeiten</span>
           <span id="locDetailHours">{% if locations[0].hours %}{{ locations[0].hours | join(' · ') }}{% else %}Nach Vereinbarung{% endif %}</span>
         </div>
+        <a id="locDirections" class="btn btn--outline btn--sm loc-directions"
+           href="https://www.google.com/maps/dir/?api=1&destination={{ locations[0].address | urlencode }}"
+           target="_blank" rel="noopener">Route planen</a>
       </aside>
     {% endif %}
   </div>
@@ -66,15 +69,14 @@
   const detailAddress = document.getElementById("locDetailAddress");
   const detailPhone = document.getElementById("locDetailPhone");
   const detailHours = document.getElementById("locDetailHours");
+  const locDirections = document.getElementById("locDirections");
 
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       cards.forEach((c) => c.classList.remove("is-active"));
       card.classList.add("is-active");
-      const embed = card.dataset.embed;
       const lat = card.dataset.lat, lng = card.dataset.lng;
-      if (embed) mapFrame.src = embed;
-      else if (lat && lng) mapFrame.src = `https://www.google.com/maps?q=${lat},${lng}&output=embed&z=15`;
+      if (lat && lng) mapFrame.src = `https://www.google.com/maps?q=${lat},${lng}&output=embed&z=15`;
       else mapFrame.src = `https://www.google.com/maps?q=cove ${encodeURIComponent(card.dataset.city)}&output=embed&z=13`;
 
       detailCity.textContent = card.dataset.city || "";
@@ -82,6 +84,8 @@
       detailPhone.textContent = card.dataset.phone || "";
       detailPhone.href = `tel:${(card.dataset.phone || "").replace(/\s/g, "")}`;
       detailHours.textContent = card.dataset.hours || "Nach Vereinbarung";
+      const destination = card.dataset.address || `cove ${card.dataset.city}`;
+      locDirections.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`;
     });
   });
 

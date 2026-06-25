@@ -13,7 +13,11 @@ from . import shop
 def _products_for(category=None):
     items = content.shop_products()
     if category and category != "neuheiten":
-        items = [p for p in items if p.get("category") == category]
+        allowed = {category}
+        parent = next((c for c in content.SHOP_CATEGORIES if c["slug"] == category), None)
+        if parent:
+            allowed.update(child["slug"] for child in parent.get("children", []))
+        items = [p for p in items if p.get("category") in allowed]
     return items
 
 

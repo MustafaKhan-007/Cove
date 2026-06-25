@@ -15,9 +15,6 @@
     <span class="hero__eyebrow" data-i18n="hero.eyebrow">MAßSCHNEIDER SEIT GENERATIONEN</span>
     <h1 class="hero__title" data-i18n="hero.title">MAßBEKLEIDUNG<br><span>VOM</span> MAßSCHNEIDER</h1>
     <p class="hero__subtitle" data-i18n="hero.subtitle">Maßanzüge, Maßhemden und klassische Garderobe — gefertigt mit Tradition und Leidenschaft.</p>
-    <div class="hero__actions">
-      <a href="/standorte" class="btn btn--outline btn--lg" data-i18n="appointment.cta_locations">Standorte entdecken</a>
-    </div>
   </div>
 </section>
 
@@ -122,27 +119,19 @@
   </div>
 </section>
 
-{# 5.6 APPOINTMENT BANNER #}
-<section class="section appt-banner">
-  <div class="appt-banner__inner animate-on-scroll">
-    <div class="gold-rule"></div>
-    <h2 data-i18n="appointment.title">Ihr persönlicher Termin</h2>
-    <p data-i18n="appointment.subtitle">Besuchen Sie uns in einer unserer 19 Filialen deutschlandweit.</p>
-    <div class="appt-banner__actions">
-      <a href="/termin" class="btn btn--gold" data-i18n="appointment.cta_book">Termin vereinbaren</a>
-      <a href="/standorte" class="btn btn--outline" data-i18n="appointment.cta_locations">Standorte entdecken</a>
-    </div>
-  </div>
-</section>
-
 {# 5.7 REVIEWS #}
 <section class="section">
-  <div class="reviews__summary animate-on-scroll">
-    <span class="section-eyebrow" data-i18n="reviews.title">Was unsere Kunden sagen</span>
-    <div class="stars">★★★★★</div>
-    <div class="reviews__summary-text">
-      <strong>{{ reviews.summary.rating or "4.9" }}</strong> —
-      <span data-i18n="reviews.summary" data-i18n-vars='{"count":"{{ reviews.summary.count or 837 }}"}'>Basierend auf {{ reviews.summary.count or 837 }} Rezensionen</span>
+  <div class="reviews__topline animate-on-scroll">
+    <div class="reviews__summary">
+      <span class="section-eyebrow" data-i18n="reviews.title">Was unsere Kunden sagen</span>
+      <div class="stars">★★★★★</div>
+      <div class="reviews__summary-text">
+        <strong>{{ reviews.summary.rating or "4.9" }}</strong> —
+        <span data-i18n="reviews.summary" data-i18n-vars='{"count":"{{ reviews.summary.count or 837 }}"}'>Basierend auf {{ reviews.summary.count or 837 }} Rezensionen</span>
+      </div>
+    </div>
+    <div class="reviews__cta">
+      <a href="{{ google_reviews_link }}" target="_blank" rel="noopener" class="btn btn--outline" data-i18n="reviews.all">Alle Rezensionen auf Google</a>
     </div>
   </div>
   <div class="reviews__grid">
@@ -156,9 +145,6 @@
         </div>
       </div>
     {% endfor %}
-  </div>
-  <div class="reviews__cta">
-    <a href="{{ google_reviews_link }}" target="_blank" rel="noopener" class="btn btn--outline" data-i18n="reviews.all">Alle Rezensionen auf Google</a>
   </div>
 </section>
 

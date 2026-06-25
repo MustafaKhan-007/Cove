@@ -58,7 +58,7 @@ LOCATION_REGIONS = {
 }
 
 GOOGLE_REVIEWS_LINK = (
-    "https://search.google.com/local/reviews?placeid=ChIJXxP_MxbKuEcR8_ExE13qEl0"
+    "https://www.google.com/maps/search/?api=1&query=COVE%20Die%20Ma%C3%9Fschneider&query_place_id=ChIJXxP_MxbKuEcR8_ExE13qEl0"
 )
 GOOGLE_PLACE_ID = "ChIJXxP_MxbKuEcR8_ExE13qEl0"
 PHONE = "+49 211 1712801"
@@ -286,25 +286,25 @@ _FALLBACK_WIKI = {
 
 _FALLBACK_SHOP = [
     {"name": "Strickpullover Rundhals Anthrazit", "price": "179,00 €",
-     "url": "https://www.cove.de/shop/", "image": "cove_strickpullover_rundhals_anthrazit_prod-300x200.jpg", "category": "ready-to-wear",
+     "url": "https://www.cove.de/shop/", "image": "cove_strickpullover_rundhals_anthrazit_prod-300x200.jpg", "category": "strickwaren",
      "brand": "cove", "variants": "Größen 48–58"},
     {"name": "Strickpullover Rollkragen Navy", "price": "179,00 €",
-     "url": "https://www.cove.de/shop/", "image": "cove-strickpullover_rollkragen_navy_prod-300x200.jpg", "category": "ready-to-wear",
+     "url": "https://www.cove.de/shop/", "image": "cove-strickpullover_rollkragen_navy_prod-300x200.jpg", "category": "strickwaren",
      "brand": "cove", "variants": "Größen 48–58"},
     {"name": "Strickpullover Rollkragen Anthrazit", "price": "179,00 €",
-     "url": "https://www.cove.de/shop/", "image": "cove_strickpullover_rollkragen_anthrazit_prod-300x200.jpg", "category": "ready-to-wear",
+     "url": "https://www.cove.de/shop/", "image": "cove_strickpullover_rollkragen_anthrazit_prod-300x200.jpg", "category": "strickwaren",
      "brand": "cove", "variants": "Größen 48–58"},
     {"name": "Strickcardigan Braun", "price": "199,00 €",
-     "url": "https://www.cove.de/shop/", "image": "cove_strickcardigan_braun_prod-300x200.jpg", "category": "ready-to-wear",
+     "url": "https://www.cove.de/shop/", "image": "cove_strickcardigan_braun_prod-300x200.jpg", "category": "strickwaren",
      "brand": "cove", "variants": "Merinowolle"},
     {"name": "Strickcardigan Navy", "price": "199,00 €",
-     "url": "https://www.cove.de/shop/", "image": "cove_strickcardigan_navy_prod-300x200.jpg", "category": "ready-to-wear",
+     "url": "https://www.cove.de/shop/", "image": "cove_strickcardigan_navy_prod-300x200.jpg", "category": "strickwaren",
      "brand": "cove", "variants": "Merinowolle"},
     {"name": "Gutschein Cove", "price": "50,00 € – 2.000,00 €",
      "url": "https://www.cove.de/shop/", "image": "gutschein-300x200.jpg", "category": "geschenke-gutscheine",
      "brand": "cove", "variants": ""},
     {"name": "Regenschirm Maglia Elegant Malacca Twill", "price": "299,00 €",
-     "url": "https://www.cove.de/shop/", "image": "f_maglia_schirm_elegant_schwarz_front-300x200.jpg", "category": "accessoires",
+     "url": "https://www.cove.de/shop/", "image": "f_maglia_schirm_elegant_schwarz_front-300x200.jpg", "category": "regenschirme",
      "brand": "Maglia", "variants": ""},
     {"name": "Crockett & Jones Boston", "price": "670,00 €",
      "url": "https://www.cove.de/shop/", "image": "Boston28363A-D11L11_686e0c31-80f8-4032-9ac1-d78cca543b4b_1400x-300x200.webp", "category": "schuhe",
@@ -334,7 +334,7 @@ _FALLBACK_SHOP = [
      "url": "https://www.cove.de/shop/", "image": "muetze_cashmere_web_grau_11-300x200.jpg", "category": "accessoires",
      "brand": "cove", "variants": "Kaschmir"},
     {"name": "Flechtgürtel Dunkelbraun", "price": "99,00 €",
-     "url": "https://www.cove.de/shop/", "image": "Guertel-Flechtguertel-DUnkelbraun-pdf.jpg", "category": "accessoires",
+     "url": "https://www.cove.de/shop/", "image": "Guertel-Flechtguertel-DUnkelbraun-pdf.jpg", "category": "guertel",
      "brand": "cove", "variants": ""},
     {"name": "Kulturbeutel", "price": "89,00 €",
      "url": "https://www.cove.de/shop/", "image": "kulturbeutel_web_1-300x200.jpg", "category": "accessoires",

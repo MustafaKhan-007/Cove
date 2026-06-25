@@ -1,8 +1,17 @@
 {# COVE Website Rebuild — templates/shop/_grid.html — product grid #}
 {% if products %}
+  <div class="shop-filters">
+    <input type="search" class="form-input shop-filter__search" id="shopSearch" placeholder="Produkt suchen..." aria-label="Produkt suchen">
+    <select class="form-select shop-filter__select" id="shopBrand" aria-label="Marke filtern">
+      <option value="">Alle Marken</option>
+      {% for brand in products | map(attribute='brand') | unique | list %}
+        {% if brand %}<option value="{{ brand }}">{{ brand }}</option>{% endif %}
+      {% endfor %}
+    </select>
+  </div>
   <div class="product-grid">
     {% for p in products %}
-      <article class="product-card">
+      <article class="product-card" data-name="{{ p.name|lower }}" data-brand="{{ (p.brand or '')|lower }}">
         <a href="{{ p.url }}" target="_blank" rel="noopener" class="product-card__media">
           {% if p.image %}
             {% if p.image.startswith('http') %}
@@ -27,3 +36,25 @@
 {% endif %}
 {# NOTE: checkout is not reimplemented — links redirect to the original cove.de shop.
    TODO: integrate a real cart/checkout backend for production. #}
+
+<script>
+  (() => {
+    const search = document.getElementById("shopSearch");
+    const brand = document.getElementById("shopBrand");
+    const cards = Array.from(document.querySelectorAll(".product-card"));
+    if (!search || !brand || !cards.length) return;
+
+    const applyFilters = () => {
+      const query = search.value.trim().toLowerCase();
+      const selectedBrand = brand.value.trim().toLowerCase();
+      cards.forEach((card) => {
+        const matchesName = !query || card.dataset.name.includes(query);
+        const matchesBrand = !selectedBrand || card.dataset.brand === selectedBrand;
+        card.style.display = matchesName && matchesBrand ? "" : "none";
+      });
+    };
+
+    search.addEventListener("input", applyFilters);
+    brand.addEventListener("change", applyFilters);
+  })();
+</script>
